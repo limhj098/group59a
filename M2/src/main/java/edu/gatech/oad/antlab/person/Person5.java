@@ -37,7 +37,7 @@ public class Person5 {
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
-	 *
+	 *     
 	 * @param input the varying string
 	 * @return the string representing the 
 	 *         object
