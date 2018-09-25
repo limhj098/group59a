@@ -113,12 +113,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     * calling System.exit()
     */
     public void cancelClick(View view){
-        System.exit(0);
+        finish();
+        //System.exit(0);
     }
 
     public void loginClick(View view){
         attemptLogin();
         if(accessGranted) {
+            accessGranted = false;
             Intent i = new Intent(this, UserActivity.class);
             startActivity(i);
         }
