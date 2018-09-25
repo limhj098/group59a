@@ -3,6 +3,7 @@ package com.example.hyejingracelim.donationtracker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private boolean accessGranted=false; // goes true after correct info entering
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +85,48 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+
+        /**
+         *  R. changed this anonymous click method to a public one
+         *  So 'this' can be called to switch activities
+         */
+
+       /* mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+               // Intent i = new Intent(this,UserActivity.class);
+               // startActivity(i);
             }
         });
+        */
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+    These two methods are listeners for the cancel and login button clicking
+    *This way of handling clicks is not the best way, so it's temporary now
+    *
+    * This maybe developed later to save what needs to be saved before
+    * calling System.exit()
+    */
+    public void cancelClick(View view){
+        System.exit(0);
+    }
+
+    public void loginClick(View view){
+        attemptLogin();
+        if(accessGranted) {
+            Intent i = new Intent(this, UserActivity.class);
+            startActivity(i);
+        }
+    }
+
+    public void setAccessGranted(){
+        accessGranted = false;
+    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -184,11 +217,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
+
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            accessGranted = true;
+
         }
     }
+
+
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
