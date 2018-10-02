@@ -126,6 +126,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    public void registerClick(View view){
+            Intent i2 = new Intent(this, RegistrationActivity.class);
+            startActivity(i2);
+    }
+
     public void setAccessGranted(){
         accessGranted = false;
     }

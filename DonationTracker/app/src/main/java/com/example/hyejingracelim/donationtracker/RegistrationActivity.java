@@ -17,6 +17,9 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText nameField;
@@ -25,6 +28,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner usertype;
 
     private User _user;
+
+    protected static List<User> registeredUsers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +45,20 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         usertype.setAdapter(adapter);
 
-        _user = new User();
-        nameField.setText(_user.getName());
-        emailField.setText(_user.getEmail());
-        passwordField.setText(_user.getPassword());
-
     }
 
     public void registerClick(View view) {
+        _user = new User();
+        registeredUsers.add(_user);
+
         _user.setName(nameField.getText().toString());
         _user.setEmail(emailField.getText().toString());
         _user.setPassword((passwordField.getText().toString()));
         _user.setUserType((UserType) usertype.getSelectedItem());
 
-        finish();
+        Intent i2 = new Intent(this, UserActivity.class);
+        startActivity(i2);
+
     }
 
     public void cancelClick(View view) {

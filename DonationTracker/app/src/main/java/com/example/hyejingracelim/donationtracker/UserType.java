@@ -2,8 +2,13 @@ package com.example.hyejingracelim.donationtracker;
 
 public enum UserType {
     GUEST,
-    USER2,
-    USER3,
-    USER4,
-    USER5;
+    CUSTOMER,
+    ADMIN,
+    DONATOR,
+    BRANCH_MANAGER,
+    WAREHOUSE_EMPLOYEE,
+    DONATION_RECORDER_EMPLOYEE,
+    ;
+
+
 }
