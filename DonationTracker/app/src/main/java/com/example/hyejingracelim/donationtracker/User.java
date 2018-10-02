@@ -1,11 +1,13 @@
 package com.example.hyejingracelim.donationtracker;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class User {
-    public static List<String> legalUsers = Arrays.asList("User1", "User2", "User3", "User4", "User5", "User6", "User7");
+    public static List<String> legalUsers = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manger",
+            "Warehouse Employee", "Donation Recorder Employee");
 
     private String _name;
     private String _email;
