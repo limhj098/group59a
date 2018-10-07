@@ -53,10 +53,15 @@ public class RegistrationActivity extends AppCompatActivity {
 
         _user.setName(nameField.getText().toString());
         _user.setEmail(emailField.getText().toString());
+        String email = emailField.getText().toString();
         _user.setPassword((passwordField.getText().toString()));
+        String pass = passwordField.getText().toString();
         _user.setUserType((UserType) usertype.getSelectedItem());
-
         Intent i2 = new Intent(this, UserActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_EMAIL", email);
+        extras.putString("EXTRA_PASS", pass);
+        i2.putExtras(extras);
         startActivity(i2);
 
     }
