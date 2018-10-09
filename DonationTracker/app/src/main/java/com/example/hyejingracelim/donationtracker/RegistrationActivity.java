@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +27,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText passwordField;
     private Spinner usertype;
 
+    FirebaseAuth firebaseAuth;
+
     private User _user;
 
     protected static List<User> registeredUsers = new ArrayList<>();
@@ -35,6 +37,8 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nameField = (EditText) findViewById(R.id.name_input);
         emailField = (EditText) findViewById(R.id.email_input);
@@ -51,19 +55,21 @@ public class RegistrationActivity extends AppCompatActivity {
         _user = new User();
         registeredUsers.add(_user);
 
-        _user.setName(nameField.getText().toString());
-        _user.setEmail(emailField.getText().toString());
+        //_user.setName(nameField.getText().toString());
+       // _user.setEmail(emailField.getText().toString());
         String email = emailField.getText().toString();
-        _user.setPassword((passwordField.getText().toString()));
+        // _user.setPassword((passwordField.getText().toString()));
         String pass = passwordField.getText().toString();
-        _user.setUserType((UserType) usertype.getSelectedItem());
+        //_user.setUserType((UserType) usertype.getSelectedItem());
+        /*
         Intent i2 = new Intent(this, UserActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_EMAIL", email);
         extras.putString("EXTRA_PASS", pass);
         i2.putExtras(extras);
         startActivity(i2);
-
+        */
+        firebaseAuth.createUserWithEmailAndPassword(email, pass);
     }
 
     public void cancelClick(View view) {

@@ -42,11 +42,12 @@ public class UserActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Bundle extras = getIntent().getExtras();
+       /* Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String email = extras.getString("EXTRA_EMAIL");
             String pass = extras.getString("EXTRA_PASS");
         }
+        */
     }
 
     /**
