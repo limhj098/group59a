@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "176357235363",
+    "firebase_url": "https://donation-57cd9.firebaseio.com",
+    "project_id": "donation-57cd9",
+    "storage_bucket": "donation-57cd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176357235363:android:bc82d1fc272321b2",
+        "android_client_info": {
+          "package_name": "com.example.hyejingracelim.donationtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176357235363-s8spphq8eb5d882fqrim1psdfuor3ltp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcD5lad7l__CuiiirzvI-R6V_SPzTkGyw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
