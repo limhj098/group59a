@@ -29,6 +29,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.support.annotation.NonNull;
+import android.app.ProgressDialog;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +49,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
+
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -69,8 +74,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private boolean accessGranted=false; // goes true after correct info entering
+    private ProgressDialog progressDialog;
 
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +84,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
 /*
-        if(firebaseAuth.getCurrentUser!= null){
+        if(firebaseAuth.getCurrentUser() != null){
+            //that means user is already logged in
             finish();
-            startActivity(new Intent (getApplicationContext(), UserActivity.class));
-            //user already logged in
+
+            //and open profile activity
+            startActivity(new Intent(getApplicationContext(), UserActivity.class));
         }
         */
         // Set up the login form.
@@ -101,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        progressDialog = new ProgressDialog(this);
 
         /**
          *  R. changed this anonymous click method to a public one
@@ -236,12 +245,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
                     @Override
-                    public void onComplete(Task<AuthResult> task){
+                    public void onComplete(@NonNull Task<AuthResult> task){
+
                         if (task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                        }
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), UserActivity.class));
                         }
 
                     }
@@ -252,16 +260,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        } else {
+        } //else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
 
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-            accessGranted = true;
+          //  showProgress(true);
+           // mAuthTask = new UserLoginTask(email, password);
+           // mAuthTask.execute((Void) null);
+           // accessGranted = true;
 
-        }
+      //  }
     }
 
 
