@@ -53,13 +53,13 @@ public class RegistrationActivity extends AppCompatActivity implements  View.OnC
         emailField = (EditText) findViewById(R.id.email_input);
         passwordField = (EditText) findViewById(R.id.password_input);
         usertype = (Spinner) findViewById(R.id.user_type);
-        buttonSignup = (Button) findViewById(R.id.register_button);
-
-        buttonSignup.setOnClickListener(this);
-
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.legalUsers);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         usertype.setAdapter(adapter);
+
+        buttonSignup = (Button) findViewById(R.id.register_button);
+
+        buttonSignup.setOnClickListener(this);
 
     }
 
@@ -72,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity implements  View.OnC
         String email = emailField.getText().toString().trim();
      //   _user.setPassword((passwordField.getText().toString()));
         String pass = passwordField.getText().toString().trim();
-     //   _user.setUserType((UserType) usertype.getSelectedItem());
+     // _user.setUserType((UserType) usertype.getSelectedItem());
 /*
         Intent i2 = new Intent(this, UserActivity.class);
         Bundle extras = new Bundle();

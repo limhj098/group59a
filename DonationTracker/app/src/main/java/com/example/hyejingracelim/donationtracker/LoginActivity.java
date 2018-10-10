@@ -251,6 +251,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             finish();
                             startActivity(new Intent(getApplicationContext(), UserActivity.class));
                         }
+                        else{
+                            Toast.makeText(LoginActivity.this, "Wrong password or email", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });
