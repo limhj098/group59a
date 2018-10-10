@@ -30,6 +30,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.AuthResult;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +46,6 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
-
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -64,10 +70,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private boolean accessGranted=false; // goes true after correct info entering
 
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        firebaseAuth = FirebaseAuth.getInstance();
+/*
+        if(firebaseAuth.getCurrentUser!= null){
+            finish();
+            startActivity(new Intent (getApplicationContext(), UserActivity.class));
+            //user already logged in
+        }
+        */
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -200,11 +216,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
+       if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+           mPasswordView.setError(getString(R.string.error_invalid_password));
+           focusView = mPasswordView;
+           cancel = true;
+       }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -216,6 +232,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mEmailView;
             cancel = true;
         }
+
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
+                    @Override
+                    public void onComplete(Task<AuthResult> task){
+                        if (task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        }
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first

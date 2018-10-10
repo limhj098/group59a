@@ -6,6 +6,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import com.google.firebase.auth.AuthResult;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import android.util.Log;
 
@@ -17,6 +21,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,21 +60,33 @@ public class RegistrationActivity extends AppCompatActivity {
         _user = new User();
         registeredUsers.add(_user);
 
-        //_user.setName(nameField.getText().toString());
-       // _user.setEmail(emailField.getText().toString());
+        _user.setName(nameField.getText().toString());
+        _user.setEmail(emailField.getText().toString());
         String email = emailField.getText().toString();
-        // _user.setPassword((passwordField.getText().toString()));
+        _user.setPassword((passwordField.getText().toString()));
         String pass = passwordField.getText().toString();
-        //_user.setUserType((UserType) usertype.getSelectedItem());
-        /*
+        _user.setUserType((UserType) usertype.getSelectedItem());
+/*
         Intent i2 = new Intent(this, UserActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_EMAIL", email);
         extras.putString("EXTRA_PASS", pass);
         i2.putExtras(extras);
         startActivity(i2);
-        */
-        firebaseAuth.createUserWithEmailAndPassword(email, pass);
+*/
+        firebaseAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(RegistrationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        }
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(RegistrationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
     }
 
     public void cancelClick(View view) {
