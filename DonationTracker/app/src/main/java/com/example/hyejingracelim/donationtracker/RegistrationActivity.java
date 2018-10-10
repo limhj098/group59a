@@ -10,8 +10,10 @@ import com.google.firebase.auth.AuthResult;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
+import android.app.ProgressDialog;
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Button;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,13 +27,14 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private EditText nameField;
     private EditText emailField;
     private EditText passwordField;
     private Spinner usertype;
-
+    private Button buttonSignup;
+    private ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
 
     private User _user;
@@ -44,11 +47,15 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
 
         nameField = (EditText) findViewById(R.id.name_input);
         emailField = (EditText) findViewById(R.id.email_input);
         passwordField = (EditText) findViewById(R.id.password_input);
         usertype = (Spinner) findViewById(R.id.user_type);
+        buttonSignup = (Button) findViewById(R.id.register_button);
+
+        buttonSignup.setOnClickListener(this);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.legalUsers);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -56,16 +63,16 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    public void registerClick(View view) {
-        _user = new User();
-        registeredUsers.add(_user);
+    public void registerClick() {
+      //  _user = new User();
+       // registeredUsers.add(_user);
 
-        _user.setName(nameField.getText().toString());
-        _user.setEmail(emailField.getText().toString());
-        String email = emailField.getText().toString();
-        _user.setPassword((passwordField.getText().toString()));
-        String pass = passwordField.getText().toString();
-        _user.setUserType((UserType) usertype.getSelectedItem());
+     //   _user.setName(nameField.getText().toString());
+     //   _user.setEmail(emailField.getText().toString());
+        String email = emailField.getText().toString().trim();
+     //   _user.setPassword((passwordField.getText().toString()));
+        String pass = passwordField.getText().toString().trim();
+     //   _user.setUserType((UserType) usertype.getSelectedItem());
 /*
         Intent i2 = new Intent(this, UserActivity.class);
         Bundle extras = new Bundle();
@@ -74,19 +81,26 @@ public class RegistrationActivity extends AppCompatActivity {
         i2.putExtras(extras);
         startActivity(i2);
 */
+        progressDialog.setMessage("Registering User.");
+        progressDialog.show();
+
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(Task<AuthResult> task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(RegistrationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                         if (!task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
-
+                        progressDialog.dismiss();
                     }
                 });
+    }
+    public void onClick(View view){
+        registerClick();
     }
 
     public void cancelClick(View view) {
