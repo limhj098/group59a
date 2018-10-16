@@ -6,10 +6,10 @@ import com.opencsv.CSVReaderBuilder;
 import java.io.FileReader;
 import java.util.List;
 
-private int key;
-private String locationName, locationType, address, city, state, type, latitude, longitude, zipCode,
-               phone, website;
 public static class readFileActivity {
+    private int key;
+    private String locationName, locationType, address, city, state, type, latitude, longitude, zipCode,
+            phone, website;
     public static void readData(String file) {
         try {
             FileReader fileReader = new FileReader(file);
