@@ -6,7 +6,7 @@ import com.opencsv.CSVReaderBuilder;
 import java.io.FileReader;
 import java.util.List;
 
-public static class readFileActivity {
+public class readFileActivity {
     private int key;
     private String locationName, locationType, address, city, state, type, latitude, longitude, zipCode,
             phone, website;
