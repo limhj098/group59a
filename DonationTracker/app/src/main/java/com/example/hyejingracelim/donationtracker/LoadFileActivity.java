@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import ...;import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoadFileActivity extends AppCompatActivity {
     @Override
@@ -22,6 +22,6 @@ public class LoadFileActivity extends AppCompatActivity {
     public void loadClick(View view) {
         Button button = (Button) view;
         button.setVisibility(View.GONE);
-
+        readFile.getData();
     }
 }

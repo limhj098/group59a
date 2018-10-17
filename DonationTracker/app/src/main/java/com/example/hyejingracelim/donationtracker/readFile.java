@@ -65,7 +65,7 @@ public class readFile {
             e.printStackTrace();
         }
     }
-    public List<String[]> getData() {
+    public static List<String[]> getData() {
         return data;
     }
 }
