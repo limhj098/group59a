@@ -19,7 +19,7 @@ public class LoadFileActivity extends AppCompatActivity {
     String[] loadedData;
     String key, locationName, locationType, address, city, state, latitude, longitude, zipCode, phone, website;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadfile);
@@ -29,7 +29,7 @@ public class LoadFileActivity extends AppCompatActivity {
         Button button = (Button) view;
         button.setVisibility(View.GONE);
         loadedData = readFile.getData();
-        /*HashMap<String, Integer> loaded = new HashMap<>();
+        HashMap<String, Integer> loaded = new HashMap<>();
         for (int i = 0; i < loadedData.size(); i++) {
                 for (int j = 0; j < 11; j++) {
                     switch (j) {
@@ -81,7 +81,7 @@ public class LoadFileActivity extends AppCompatActivity {
                             break;
                     }
                 }
-        }*/
+        }
 
-    }
+    }*/
 }
