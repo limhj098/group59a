@@ -14,7 +14,7 @@ public class readFile {
     private static List<String[]> data;
     public static void readData() {
         try {
-            FileReader fileReader = new FileReader(new File("LocationData.csv"));
+            FileReader fileReader = new FileReader(new File("Users/Jinwoo Hwang/Documents/group59a/DonationTracker/LocationData.csv"));
             CSVReader csvReader = new CSVReaderBuilder(fileReader)
                     .withSkipLines(2)
                     .build();
