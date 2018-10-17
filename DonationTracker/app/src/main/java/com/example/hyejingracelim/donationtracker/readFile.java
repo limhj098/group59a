@@ -11,6 +11,7 @@ import java.util.List;
 public class readFile {
     private static String key, locationName, locationType, address, city, state, latitude, longitude, zipCode,
             phone, website;
+    static List<String[]> data;
 
     public static void readData(String file) {
         try {
@@ -18,7 +19,7 @@ public class readFile {
             CSVReader csvReader = new CSVReaderBuilder(fileReader)
                     .withSkipLines(2)
                     .build();
-            List<String[]> data = csvReader.readAll();
+            data = csvReader.readAll();
             for (int i = 0; i < data.size(); i++) {
                 for (int j = 0; j < 11; j++) {
                     switch (j) {
