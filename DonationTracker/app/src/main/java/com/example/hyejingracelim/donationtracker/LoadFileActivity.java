@@ -23,60 +23,62 @@ public class LoadFileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadfile);
-        readFile.readData("LocationData.csv");
+        readFile.readData("LocationData.csv");        //static method call for readFile class
+                                                           //to store data from the file stated in parameters
     }
 
     public void loadClick(View view) {
         Button button = (Button) view;
-        button.setVisibility(View.GONE);
-        loadedData = readFile.getData();
+        button.setVisibility(View.GONE);                   //If load data button is clicked, the button disappears from memory AND from view.
+        loadedData = readFile.getData();                   //Retrieves the loaded data from file onto the list
         HashMap<String, Integer> loaded = new HashMap<>();
-        for (int i = 0; i < loadedData.size(); i++) {
+        for (int i = 0; i < loadedData.size(); i++) {      //There are 12 elements for each location, so I want to get the correct element
+                                                           //for each variable, so I scan through the list, and once every 12 elements
             for (int j = 0; j < 11; j++) {
                 switch (j) {
                     case 0:
-                        key = loadedData.get(i).toString();
-                        loaded.put(key, i);
+                        key = loadedData.get(i + j).toString();
+                        loaded.put(key, i + j);
                         break;
                     case 1:
-                        locationName = loadedData.get(i).toString();
-                        loaded.put(locationName, i);
+                        locationName = loadedData.get(i + j).toString();
+                        loaded.put(locationName, i + j);
                         break;
                     case 2:
-                        latitude = loadedData.get(i).toString();
-                        loaded.put(latitude, i);
+                        latitude = loadedData.get(i + j).toString();
+                        loaded.put(latitude, i + j);
                         break;
                     case 3:
-                        longitude = loadedData.get(i).toString();
-                        loaded.put(longitude, i);
+                        longitude = loadedData.get(i + j).toString();
+                        loaded.put(longitude, i + j);
                         break;
                     case 4:
-                        address = loadedData.get(i).toString();
-                        loaded.put(address, i);
+                        address = loadedData.get(i + j).toString();
+                        loaded.put(address, i + j);
                         break;
                     case 5:
-                        city = loadedData.get(i).toString();
-                        loaded.put(city, i);
+                        city = loadedData.get(i + j).toString();
+                        loaded.put(city, i + j);
                         break;
                     case 6:
-                        state = loadedData.get(i).toString();
-                        loaded.put(state, i);
+                        state = loadedData.get(i + j).toString();
+                        loaded.put(state, i + j);
                         break;
                     case 7:
-                        zipCode = loadedData.get(i).toString();
-                        loaded.put(zipCode, i);
+                        zipCode = loadedData.get(i + j).toString();
+                        loaded.put(zipCode, i + j);
                         break;
                     case 8:
-                        locationType = loadedData.get(i).toString();
-                        loaded.put(locationType, i);
+                        locationType = loadedData.get(i + j).toString();
+                        loaded.put(locationType, i + j);
                         break;
                     case 9:
-                        phone = loadedData.get(i).toString();
-                        loaded.put(phone, i);
+                        phone = loadedData.get(i + j).toString();
+                        loaded.put(phone, i + j);
                         break;
                     case 10:
-                        website = loadedData.get(i).toString();
-                        loaded.put(website, i);
+                        website = loadedData.get(i + j).toString();
+                        loaded.put(website, i + j);
                         break;
                     default:
                         break;
