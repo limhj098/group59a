@@ -16,13 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LoadFileActivity extends AppCompatActivity {
-    String[] loadedData;
+    List<String[]> loadedData;
     String key, locationName, locationType, address, city, state, latitude, longitude, zipCode, phone, website;
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadfile);
+        readFile.readData("LocationData.csv");
     }
 
     public void loadClick(View view) {
@@ -83,5 +84,6 @@ public class LoadFileActivity extends AppCompatActivity {
                 }
         }
 
-    }*/
+
+    }
 }
