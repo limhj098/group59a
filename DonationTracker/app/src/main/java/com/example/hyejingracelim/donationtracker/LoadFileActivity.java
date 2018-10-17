@@ -23,7 +23,7 @@ public class LoadFileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loadfile);
-        readFile.readData("LocationData.csv");
+        readFile.readData();
     }
 
     public void loadClick(View view) {

@@ -8,12 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class readFile {
     private static List<String[]> data;
-    public static void readData(String file) {
+    public static void readData() {
         try {
-            FileReader fileReader = new FileReader(new File(file));
+            FileReader fileReader = new FileReader(new File("LocationData.csv"));
             CSVReader csvReader = new CSVReaderBuilder(fileReader)
                     .withSkipLines(2)
                     .build();
