@@ -32,8 +32,8 @@ public class LoadFileActivity extends AppCompatActivity {
         button.setVisibility(View.GONE);                   //If load data button is clicked, the button disappears from memory AND from view.
         loadedData = readFile.getData();                   //Retrieves the loaded data from file onto the list
         HashMap<String, Integer> loaded = new HashMap<>();
-        for (int i = 0; i < loadedData.size(); i++) {      //There are 12 elements for each location, so I want to get the correct element
-                                                           //for each variable, so I scan through the list, and once every 12 elements
+        for (int i = 0; i < loadedData.size(); i++) {      //There are 12 elements for each Location in the file, so I want to get the correct element
+                                                           //for each variable, so I scan through the list making sure I put in the right variable the element of the right place in the List.
             for (int j = 0; j < 11; j++) {
                 switch (j) {
                     case 0:
