@@ -20,10 +20,10 @@ public class readFile {
             data = csvReader.readAll();
         }
         catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("FileNotFoundException");
         }
         catch (IOException e1) {
-            e1.printStackTrace();
+            System.out.println("IOException");
         }
     }
     public static List<String[]> getData() {
