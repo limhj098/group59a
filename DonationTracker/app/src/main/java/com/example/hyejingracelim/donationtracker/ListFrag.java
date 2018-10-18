@@ -56,7 +56,7 @@ public class ListFrag extends ListFragment {
 
 
 
-       Log.d("Moose","***  ***   ***  ***  *** ***");
+      Log.d("Moose","On List <<< ");
 
 
         setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,list));

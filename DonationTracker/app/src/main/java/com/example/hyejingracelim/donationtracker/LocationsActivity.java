@@ -25,7 +25,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     static boolean loadData = false;
     static ArrayList<String[]>  allData = new ArrayList<String[]>();
     static ArrayList<String>  list = null;
-    static String []  detailedList = null;
+    static String []  detailedList ;
 
 
     @Override
@@ -61,7 +61,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
 
     public ArrayList<String[]> readCSV(){
 
-        ArrayList<String[]>  allData = new ArrayList<String[]>();
+          allData = new ArrayList<String[]>();
 
 
         // Read the raw csv file
@@ -91,16 +91,21 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     @Override
     public void onItemSelection(int index) {
 
-       // ListView lv = findViewById(R.id.listDet);
-        detailedList= new String[allData.get(index).length];
 
-            detailedList= allData.get(index).clone();
+            // ListView lv = findViewById(R.id.listDet);
+            Log.d("Moose",Arrays.toString(detailedList)+" >>>>>>");
+
+//            detailedList = new String[allData.get(index).length];
+            detailedList = allData.get(index).clone();
 
 
+            Log.d("Moose", Arrays.toString(allData.get(3))+" << < < < << ");
 
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+//
+//            Intent intent = getIntent();
+//            finish();
+//            startActivity(intent);
+
 
     }
 }
