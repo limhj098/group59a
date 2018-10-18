@@ -1,5 +1,7 @@
 package com.example.hyejingracelim.donationtracker;
 
+import android.util.Log;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
@@ -92,7 +94,7 @@ public class readFile {
             }
         }
         for (HashMap.Entry<String, Integer> entry : loaded.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+            Log.d("HashMap Output", entry.getKey() + " : " + entry.getValue());
         }
         return loaded;
     }
