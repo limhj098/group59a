@@ -108,6 +108,13 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
 
 
     }
+
+    public void logout(View view){
+        //Intent i = new Intent();
+        finish();
+    }
+
+
 }
 
 

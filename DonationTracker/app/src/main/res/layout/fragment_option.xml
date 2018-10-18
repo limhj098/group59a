@@ -11,20 +11,20 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:onClick="logout"
-        android:text="Sign \n Out" />
+        android:text="Sign \n Out"
+        android:textColor="@color/justWhite"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Load \n data"
-        android:onClick="readData"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update" />
+        android:background="@color/colorAccent"
+        android:onClick="readData"
+        android:text="Load \ndata"
+        android:textColor="@color/justWhite"
+        android:textStyle="bold" />
 
 </LinearLayout>

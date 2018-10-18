@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,6 +77,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private boolean accessGranted=false; // goes true after correct info entering
     private ProgressDialog progressDialog;
+
+    private int numberOfCalls = 0;
 
     private FirebaseAuth firebaseAuth;
 
@@ -145,6 +148,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void loginClick(View view){
         attemptLogin();
+        numberOfCalls=0;
         if(accessGranted) {
             accessGranted = false;
            // Intent i = new Intent(this, LocationsActivity.class);//startActivity(i);
@@ -256,8 +260,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     public void onComplete(@NonNull Task<AuthResult> task){
 
                         if (task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), LocationsActivity.class));
+                            numberOfCalls++;
+                            if(numberOfCalls==1) {
+                                //finish();
+                                Log.d("Moose", "How many times ***");
+                                startActivity(new Intent(getApplicationContext(), LocationsActivity.class));
+                            }
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Wrong password or email", Toast.LENGTH_SHORT).show();
