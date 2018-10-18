@@ -33,7 +33,7 @@
             android:name=".LoadFileActivity"
             android:label="LoadFileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LocationsActivity"></activity>
+        <activity android:name=".LocationsActivity" />
     </application>
 
 </manifest>

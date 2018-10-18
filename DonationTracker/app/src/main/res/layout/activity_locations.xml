@@ -9,21 +9,29 @@
     tools:context=".LocationsActivity">
 
 
-    <Button
-        android:id="@+id/SignOut"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:background="@color/colorAccent"
-        android:text="SIng \nOut"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold|italic"
-        android:onClick="logout"/>
+    <!--<Button-->
+    <!--android:id="@+id/SignOut"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="3"-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:onClick="logout"-->
+    <!--android:text="SIng \nOut"-->
+    <!--android:textColor="#FFFFFF"-->
+    <!--android:textStyle="bold|italic" />-->
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.hyejingracelim.donationtracker.OptionFrag"
+        android:layout_width="69dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_option" />
 
     <fragment
         android:id="@+id/ListFrag"
         android:name="com.example.hyejingracelim.donationtracker.ListFrag"
-        android:layout_width="0dp"
+        android:layout_width="54dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
         tools:layout="@layout/fragment_list" />

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 
 /**
@@ -47,6 +50,11 @@ public class ListFrag extends ListFragment {
         ArrayList<String> list = new ArrayList<String>();
         list.add("comp 1");
         list.add("comp 2");
+
+
+
+       Log.d("Moose","***  ***   ***  ***  *** ***");
+
 
         setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,list));
     }

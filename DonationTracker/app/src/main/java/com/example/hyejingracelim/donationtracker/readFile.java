@@ -37,7 +37,10 @@ public class readFile {
     public static List<String[]> getData() {
         return data;
     }
+
     public static HashMap<String, Integer> getMap() {
+        readData("LocationData.csv");
+
         HashMap<String, Integer> loaded = new HashMap<>();
         String key, locationName, locationType, address, city, state, latitude, longitude, zipCode, phone, website;
         int counter = -1;
