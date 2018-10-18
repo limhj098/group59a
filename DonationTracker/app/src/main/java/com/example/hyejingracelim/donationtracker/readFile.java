@@ -95,9 +95,9 @@ public class readFile {
                 }
             }
         }
-        for (HashMap.Entry<String, Integer> entry : loaded.entrySet()) {
+        /*for (HashMap.Entry<String, Integer> entry : loaded.entrySet()) {
             Log.d("HASHMAP", entry.getKey() + " : " + entry.getValue());
-        }
+        }*/
         return loaded;
     }
 }
