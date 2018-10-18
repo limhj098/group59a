@@ -40,7 +40,7 @@ public class readFile {
     public static HashMap<String, Integer> getMap() {
         HashMap<String, Integer> loaded = new HashMap<>();
         String key, locationName, locationType, address, city, state, latitude, longitude, zipCode, phone, website;
-        for (int i = 0; i < data.size(); i++) {      //There are 12 elements for each Location in the file, so I want to get the correct element
+        for (int i = 0; i < data.size(); i = i + 11) {      //There are 12 elements for each Location in the file, so I want to get the correct element
             //for each variable, so I scan through the list making sure I put in the right variable the element of the right place in the List.
             for (int j = 0; j < 11; j++) {
                 switch (j) {
