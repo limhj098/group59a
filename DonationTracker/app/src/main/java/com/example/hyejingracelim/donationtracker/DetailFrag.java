@@ -40,20 +40,20 @@ public class DetailFrag extends ListFragment {
 
 
 
-        String[] arr = new String[12];
+        String[] arr;
 
         if (LocationsActivity.detailedList == null)
-            arr[0] = ("No Data Availble !");
+            list.add("No Data Availble !");
         else {
-            arr = LocationsActivity.detailedList;
+            arr = LocationsActivity.detailedList.clone();
 
             for (int i = 0; i < arr.length; i++) {
                 list.add(arr[i]);
             }
 
-
-            setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list));
         }
+            setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list));
+
 
 
     }

@@ -46,7 +46,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         list.clear();
 
         for (String[] str: allData){
-            list.add(str[1]+" \n "+str[8]);
+            list.add(str[1]+" "+str[8]);
         }
 
         Intent intent = getIntent();
@@ -92,6 +92,11 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     public void onItemSelection(int index) {
 
        // ListView lv = findViewById(R.id.listDet);
+        detailedList= new String[allData.get(index).length];
+
+            detailedList= allData.get(index).clone();
+
+
 
         Intent intent = getIntent();
         finish();
