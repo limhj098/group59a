@@ -43,8 +43,8 @@ public class readFile {
         int counter = -1;
         for (int i = 0; i < data.size(); i = i + 11) {      //There are 12 elements for each Location in the file, so I want to get the correct element
             //for each variable, so I scan through the list making sure I put in the right variable the element of the right place in the List.
+            counter++;
             for (int j = 0; j < 11; j++) {
-                counter++;
                 switch (j) {
                     case 0:
                         key = data.get(i + j).toString();
