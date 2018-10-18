@@ -1,10 +1,13 @@
 package com.example.hyejingracelim.donationtracker;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -15,7 +18,15 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LocationsActivity extends AppCompatActivity {
+import static com.example.hyejingracelim.donationtracker.ListFrag.list;
+
+public class LocationsActivity extends AppCompatActivity implements ListFrag.itemSelected {
+
+    static boolean loadData = false;
+    static ArrayList<String[]>  allData = new ArrayList<String[]>();
+    static ArrayList<String>  list = null;
+    static String []  detailedList = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +36,27 @@ public class LocationsActivity extends AppCompatActivity {
 //
 
     public void readData(View view) {
+        loadData =true;
+        list =new ArrayList<String>();
+
         ArrayList<String[]>  allData= readCSV();
         Log.d("Moose",Arrays.toString(allData.get(0)));
         Toast.makeText(getApplicationContext(),"Data have been loaded successfully",Toast.LENGTH_LONG).show();
 
+        list.clear();
+
+        for (String[] str: allData){
+            list.add(str[1]+" \n "+str[8]);
+        }
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
+
+//
+//        ListFrag l = new ListFrag();
+//        l.onActivityCreated(null);
     }
 
     public ArrayList<String[]> readCSV(){
@@ -59,6 +87,17 @@ public class LocationsActivity extends AppCompatActivity {
         }
         return allData;
     }
+
+    @Override
+    public void onItemSelection(int index) {
+
+       // ListView lv = findViewById(R.id.listDet);
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
     }
+}
 
 

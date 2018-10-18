@@ -24,32 +24,35 @@ import java.util.HashMap;
  */
 public class ListFrag extends ListFragment {
 
+    itemSelected activity;
+
+    public interface itemSelected{
+        void onItemSelection(int index);
+    }
+    static ArrayList<String>  list = new ArrayList<String>();
 
     public ListFrag() {
         // Required empty public constructor
     }
 
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_list, container, false);
-//    }
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        activity = (itemSelected) context;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("comp 1");
-        list.add("comp 2");
+//        if(!LocationsActivity.loadData)
+//
+        if(LocationsActivity.list == null)
+        list.add("No Data Availble !");
+        else
+            list = LocationsActivity.list;
+
 
 
 
@@ -62,5 +65,6 @@ public class ListFrag extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        activity.onItemSelection(position);
     }
 }
