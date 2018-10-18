@@ -65,6 +65,7 @@ public class ListFrag extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        if(LocationsActivity.loadData)
         activity.onItemSelection(position);
     }
 }

@@ -147,9 +147,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         attemptLogin();
         if(accessGranted) {
             accessGranted = false;
-            Intent i = new Intent(this, LocationsActivity.class);
-            startActivity(i);
+           // Intent i = new Intent(this, LocationsActivity.class);//startActivity(i);
         }
+
     }
 
     public void registerClick(View view){
