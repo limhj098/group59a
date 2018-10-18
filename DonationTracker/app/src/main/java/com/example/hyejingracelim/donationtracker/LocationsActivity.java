@@ -93,18 +93,18 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
 
 
             // ListView lv = findViewById(R.id.listDet);
-            Log.d("Moose",Arrays.toString(detailedList)+" >>>>>>");
+            //Log.d("Moose",Arrays.toString(detailedList)+" >>>>>>");
 
 //            detailedList = new String[allData.get(index).length];
             detailedList = allData.get(index).clone();
 
 
-            Log.d("Moose", Arrays.toString(allData.get(3))+" << < < < << ");
+            Log.d("Moose", Arrays.toString(allData.get(index))+" The data for the location:"+index);
 
 //
-//            Intent intent = getIntent();
-//            finish();
-//            startActivity(intent);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
 
 
     }
