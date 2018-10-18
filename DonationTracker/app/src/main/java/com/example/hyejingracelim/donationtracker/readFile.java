@@ -40,53 +40,55 @@ public class readFile {
     public static HashMap<String, Integer> getMap() {
         HashMap<String, Integer> loaded = new HashMap<>();
         String key, locationName, locationType, address, city, state, latitude, longitude, zipCode, phone, website;
+        int counter = -1;
         for (int i = 0; i < data.size(); i = i + 11) {      //There are 12 elements for each Location in the file, so I want to get the correct element
             //for each variable, so I scan through the list making sure I put in the right variable the element of the right place in the List.
             for (int j = 0; j < 11; j++) {
+                counter++;
                 switch (j) {
                     case 0:
                         key = data.get(i + j).toString();
-                        loaded.put(key, i + j);
+                        loaded.put(key, i + counter);
                         break;
                     case 1:
                         locationName = data.get(i + j).toString();
-                        loaded.put(locationName, i + j);
+                        loaded.put(locationName, i + counter);
                         break;
                     case 2:
                         latitude = data.get(i + j).toString();
-                        loaded.put(latitude, i + j);
+                        loaded.put(latitude, i + counter);
                         break;
                     case 3:
                         longitude = data.get(i + j).toString();
-                        loaded.put(longitude, i + j);
+                        loaded.put(longitude, i + counter);
                         break;
                     case 4:
                         address = data.get(i + j).toString();
-                        loaded.put(address, i + j);
+                        loaded.put(address, i + counter);
                         break;
                     case 5:
                         city = data.get(i + j).toString();
-                        loaded.put(city, i + j);
+                        loaded.put(city, i + counter);
                         break;
                     case 6:
                         state = data.get(i + j).toString();
-                        loaded.put(state, i + j);
+                        loaded.put(state, i + counter);
                         break;
                     case 7:
                         zipCode = data.get(i + j).toString();
-                        loaded.put(zipCode, i + j);
+                        loaded.put(zipCode, i + counter);
                         break;
                     case 8:
                         locationType = data.get(i + j).toString();
-                        loaded.put(locationType, i + j);
+                        loaded.put(locationType, i + counter);
                         break;
                     case 9:
                         phone = data.get(i + j).toString();
-                        loaded.put(phone, i + j);
+                        loaded.put(phone, i + counter);
                         break;
                     case 10:
                         website = data.get(i + j).toString();
-                        loaded.put(website, i + j);
+                        loaded.put(website, i + counter);
                         break;
                     default:
                         break;
