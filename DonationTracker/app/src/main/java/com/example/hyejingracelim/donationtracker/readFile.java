@@ -94,7 +94,7 @@ public class readFile {
             }
         }
         for (HashMap.Entry<String, Integer> entry : loaded.entrySet()) {
-            Log.d("HashMap Output", entry.getKey() + " : " + entry.getValue());
+            Log.d("HASHMAP", entry.getKey() + " : " + entry.getValue());
         }
         return loaded;
     }
