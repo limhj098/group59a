@@ -42,8 +42,10 @@ public class DetailFrag extends ListFragment {
 
         String[] arr;
 
-        if (LocationsActivity.detailedList == null || list.isEmpty())
-            list.add("No Data Availble !");
+        if (LocationsActivity.detailedList == null || list.isEmpty()) {
+            list.clear();
+            list.add("Choose a location to Display");
+        }
 
         else {
             list.clear();

@@ -46,8 +46,10 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         list.clear();
 
         for (String[] str: allData){
-            list.add(str[1]+" "+str[8]);
+            list.add(str[1]+" \n("+str[8]+")");
+
         }
+        list.remove(0);
 
         Intent intent = getIntent();
         finish();
@@ -96,6 +98,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
             //Log.d("Moose",Arrays.toString(detailedList)+" >>>>>>");
 
 //            detailedList = new String[allData.get(index).length];
+            index +=1;
             detailedList = allData.get(index).clone();
 
 
