@@ -27,6 +27,7 @@ public class LoadFileActivity extends AppCompatActivity {
                                                            //to store data from the file stated in parameters
     }
 
+
     public void loadClick(View view) {
         Button button = (Button) view;
         button.setVisibility(View.GONE);                   //If load data button is clicked, the button disappears from memory AND from view.

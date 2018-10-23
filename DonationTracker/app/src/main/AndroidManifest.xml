@@ -34,6 +34,7 @@
             android:label="LoadFileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LocationsActivity" />
+        <activity android:name=".DataEntryActivity"/>
     </application>
 
 </manifest>

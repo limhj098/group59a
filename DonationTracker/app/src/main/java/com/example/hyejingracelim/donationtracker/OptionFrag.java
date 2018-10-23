@@ -7,12 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OptionFrag extends Fragment {
+public class OptionFrag extends Fragment{
 
 
     public OptionFrag() {
@@ -24,7 +26,18 @@ public class OptionFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_option, container, false);
+        View v = inflater.inflate(R.layout.fragment_option, container, false);
+
+        final Button button = (Button) v.findViewById(R.id.data_entry_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i2 = new Intent(getActivity(),DataEntryActivity.class);
+                startActivity(i2);
+               // getActivity().finish();
+            }});
+
+        return v;
     }
 
     /**
