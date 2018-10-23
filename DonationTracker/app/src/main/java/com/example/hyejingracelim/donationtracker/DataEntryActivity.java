@@ -80,12 +80,15 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         //navigate to data load page to display the item that they have entered.
         //will load diff item based on location that is entered into the textfield.
 
-
-
-
-      //  Intent i = new Intent(this,itemDisplayActivity.class);
-     //   startActivity(i);
-       // finish();
+      Intent i = new Intent(this,itemDisplayActivity.class);
+      i.putExtra("time", timeField.getText().toString());
+        i.putExtra("name", nameField.getText().toString());
+        i.putExtra("shortDescription", shortDescriptionField.getText().toString());
+        i.putExtra("fullDescription", fullDescriptionField.getText().toString());
+        i.putExtra("Location", locationSpinner.getSelectedItem().toString());
+        i.putExtra("Catagory", locationSpinner.getSelectedItem().toString());
+      startActivity(i);
+      finish();
     }
 
     public void onClick(View view){
