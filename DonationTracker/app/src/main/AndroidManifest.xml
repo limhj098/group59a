@@ -35,6 +35,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LocationsActivity" />
         <activity android:name=".DataEntryActivity"/>
+        <activity android:name=".itemDisplayActivity"/>
     </application>
 
 </manifest>

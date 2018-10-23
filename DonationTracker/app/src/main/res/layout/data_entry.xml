@@ -9,7 +9,7 @@
         android:id="@+id/time"
         android:layout_width="377dp"
         android:layout_height="55dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
         android:hint="Time"
         android:inputType="time"
@@ -26,7 +26,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/location_spinner"
         app:layout_constraintTop_toBottomOf="@+id/time"
-        tools:layout_editor_absoluteX="4dp" />
+        tools:layout_editor_absoluteX="2dp" />
 
     <EditText
         android:id="@+id/short_description"
@@ -42,13 +42,13 @@
     <EditText
         android:id="@+id/full_description"
         android:layout_width="382dp"
-        android:layout_height="82dp"
+        android:layout_height="86dp"
         android:ems="10"
         android:hint="Full Description:"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/value"
         app:layout_constraintTop_toBottomOf="@+id/short_description"
-        tools:layout_editor_absoluteX="3dp" />
+        tools:layout_editor_absoluteX="2dp" />
 
     <EditText
         android:id="@+id/value"
@@ -63,11 +63,9 @@
 
     <Spinner
         android:id="@+id/catagory_spinner"
-        android:layout_width="373dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="380dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/value" />
 
@@ -77,6 +75,23 @@
         android:layout_height="40dp"
         app:layout_constraintBottom_toTopOf="@+id/short_description"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:layout_editor_absoluteX="-1dp" />
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="253dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="85dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/catagory_spinner" />
 
 </android.support.constraint.ConstraintLayout>
