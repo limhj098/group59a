@@ -18,7 +18,7 @@ public class itemDisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.data_entry);
+        setContentView(R.layout.item_display_page);
 
     }
 
