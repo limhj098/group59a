@@ -13,7 +13,7 @@ import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-public class itemDisplayActivity extends AppCompatActivity {
+public class itemDisplayActivity extends AppCompatActivity implements View.OnClickListener{
 
     private String myTime;
     private String name;
@@ -23,10 +23,14 @@ public class itemDisplayActivity extends AppCompatActivity {
     private String catagory;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_display_page);
+
+        Button buttonAddMore = (Button) findViewById(R.id.add_item);
+        buttonAddMore.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -36,7 +40,19 @@ public class itemDisplayActivity extends AppCompatActivity {
             fullDescription = extras.getString("fullDescription");
             location = extras.getString("location");
             catagory = extras.getString("catagory");
+
         }
+
+    }
+
+    public void onClick(View view){
+        submitClick();
+    }
+
+    public void submitClick() {
+        Intent i = new Intent(this, DataEntryActivity.class);
+        startActivity(i);
+        finish();
     }
 
 
