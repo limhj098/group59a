@@ -49,6 +49,9 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
         buttonSubmit = (Button) findViewById(R.id.submit);
         buttonSubmit.setOnClickListener(this);
+
+   //     Button buttonCancel = (Button) findViewById(R.id.cancel);
+     //   buttonCancel.setOnClickListener();
     }
 
     public void submitClick() {
@@ -93,6 +96,12 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
 
     public void onClick(View view){
         submitClick();
+    }
+
+    public void cancelClick(View view) {
+        Intent i2 = new Intent(this, LocationsActivity.class);
+        startActivity(i2);
+        finish();
     }
 
 
