@@ -20,6 +20,16 @@ public class itemDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_display_page);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String myTime = extras.getString("time");
+            String name = extras.getString("name");
+            String shortDescription = extras.getString("shortDescription");
+            String fullDescription = extras.getString("fullDescription");
+            String location = extras.getString("location");
+            String catagory = extras.getString("catagory");
+        }
     }
+
 
 }
