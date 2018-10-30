@@ -29,14 +29,19 @@ public class OptionFrag extends Fragment{
         View v = inflater.inflate(R.layout.fragment_option, container, false);
 
         final Button button = (Button) v.findViewById(R.id.data_entry_button);
-
+        final Button button1 = (Button) v.findViewById(R.id.viewItems);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i2 = new Intent(getActivity(),DataEntryActivity.class);
                 startActivity(i2);
-               // getActivity().finish();
+                // getActivity().finish();
             }});
-
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i3 = new Intent(getActivity(),itemDisplayActivity.class);
+                startActivity(i3);
+                // getActivity().finish();
+            }});
         return v;
     }
 

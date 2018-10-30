@@ -34,4 +34,10 @@
         android:background="@color/colorAccent"
         android:text="Go to data Entry Screen" />
 
+    <Button
+        android:id="@+id/viewItems"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:text="View Items" />
+
 </LinearLayout>

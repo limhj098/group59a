@@ -43,7 +43,7 @@ import java.util.List;
 
 public class DataEntryActivity extends AppCompatActivity {
 
-    private static final String TAG = "AddToDatabase";
+    //private static final String TAG = "AddToDatabase";
 
     private DatabaseReference databaseUsers;
 
@@ -65,17 +65,16 @@ public class DataEntryActivity extends AppCompatActivity {
     private String catagory_data;
     private String price;
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    //private FirebaseDatabase mFirebaseDatabase;
+    //private FirebaseAuth mAuth;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_entry);
-
-        databaseUsers = FirebaseDatabase.getInstance().getReference("user data");
+        //databaseUsers = FirebaseDatabase.getInstance().getReference("user data");
 
         buttonSubmit = (Button) findViewById(R.id.submit);
         timeField = (EditText) findViewById(R.id.time);
@@ -101,7 +100,7 @@ public class DataEntryActivity extends AppCompatActivity {
                 //calling the method addArtist()
                 //the method is defined below
                 //this method is actually performing the write operation
-                addUserInfo();
+                //addUserInfo();
             }
         });
     }//onCreate
