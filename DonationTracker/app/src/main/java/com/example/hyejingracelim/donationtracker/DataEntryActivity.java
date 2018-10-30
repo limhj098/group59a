@@ -27,6 +27,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 
 
 import java.util.Arrays;
@@ -105,17 +114,60 @@ public class DataEntryActivity extends AppCompatActivity {
         String location_data = locationSpinner.getSelectedItem().toString();
         String catagory_data = catagorySpinner.getSelectedItem().toString();
         String price = priceField.getText().toString().trim();
-
-        if (!TextUtils.isEmpty(name)) {
+        Item a = new Item();
+        a.donationTime = time;
+        a.location = location_data;
+        a.catagory = catagory_data;
+        a.longDescription = fullDescript;
+        a.shortDescription = shortDescript;
+        a.value = price;
+        //if (!TextUtils.isEmpty(name)) {
             //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Artist
-            String id = databaseUsers.push().getKey();
+            //String id = databaseUsers.push().getKey();
             //creating an Artist Object
-            User user = new User(name, time, shortDescript, fullDescript, location_data, catagory_data, price);
-            databaseUsers.child(id).setValue(user);
+            //User user = new User(name, time, shortDescript, fullDescript, location_data, catagory_data, price);
+            //databaseUsers.child(id).setValue(user);
             //displaying a success toast
-            Toast.makeText(this, "User Info added", Toast.LENGTH_LONG).show();
-        }
+            //Toast.makeText(this, "User Info added", Toast.LENGTH_LONG).show();
+        //}
+        try {
+            // Creates a file in the primary external storage space of the
+            // current application.
+            // If the file does not exists, it is created.
+            File testFile = new File(this.getExternalFilesDir(null), "itemInfo");
+            if (!testFile.exists()) {
+                testFile.createNewFile();
+                FileOutputStream ofi = openFileOutput("itemInfo",0);
+                ObjectOutputStream oos = new ObjectOutputStream(ofi);
+                HashMap<String, Item> test = new HashMap<String, Item>();
+                test.put(name, a);
+                oos.writeObject(test);
+                oos.close();
+                ofi.close();
+            }
+            // Adds a line to the file
+            else {
+                FileInputStream fis = openFileInput("itemInfo");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+                ois.close();
+                fis.close();
+
+                FileOutputStream ofi = openFileOutput("itemInfo",0);
+                ObjectOutputStream oos = new ObjectOutputStream(ofi);
+                HashMap<String, Item> test = itemInfo;
+                test.put(name, a);
+                oos.writeObject(test);
+                oos.close();
+                ofi.close();
+            }
+            // Refresh the data so it can seen when the device is plugged in a
+            // computer. You may have to unplug and replug the device to see the
+            // latest changes. This is not necessary if the user should not modify
+            // the files.
+
+        } catch (Exception e) { }
         Intent i = new Intent(this,itemDisplayActivity.class);
         startActivity(i);
         finish();

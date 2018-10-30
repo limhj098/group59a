@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,133 +10,43 @@
         android:id="@+id/add_item"
         android:layout_width="298dp"
         android:layout_height="41dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="onClick"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Add more Items"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_list" />
+        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
 
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+    <ListView
+        android:id="@+id/itemList"
+        android:layout_width="332dp"
+        android:layout_height="270dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Search Bar:"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/searchBox"
-        android:layout_width="223dp"
-        android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginRight="161dp"
-        android:ems="10"
-        android:hint="Search Here"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/searchButton"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="25dp" />
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="36dp"
-        android:layout_height="37dp"
-        android:layout_alignBaseline="@+id/searchBox"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="234dp"
-        android:layout_marginLeft="234dp"
-        android:layout_marginEnd="114dp"
-        android:layout_marginRight="114dp"
-        app:layout_constraintStart_toEndOf="@+id/searchBox"
-        tools:layout_editor_absoluteY="56dp" />
-
     <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/add_item"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="109dp"
-        android:text="name" />
+        android:id="@+id/itemAttributes"
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="23dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemList" />
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_alignStart="@+id/add_item"
-        android:text="price" />
-
-    <TextView
-        android:id="@+id/shortdes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/price"
-        android:layout_alignStart="@+id/add_item"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="0dp"
-        android:text="short" />
-
-    <TextView
-        android:id="@+id/longdes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/shortdes"
-        android:layout_alignStart="@+id/add_item"
-        android:text="long" />
-
-    <TextView
-        android:id="@+id/catagory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="109dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginRight="129dp"
-        android:text="catagory" />
-
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginRight="133dp"
-        android:text="location" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/name"
-        android:layout_toEndOf="@+id/header"
-        android:text="time" />
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
