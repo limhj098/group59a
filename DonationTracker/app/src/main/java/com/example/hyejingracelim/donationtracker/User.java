@@ -20,8 +20,35 @@ public class User {
     private String _password;
     private UserType _userType;
 
-    public String getName() { return _name; }
-    public void setName(String name) { _name = name; }
+    private String name;
+    private String time;
+    private String shortDescript;
+    private String fullDescript;
+    private String location_data;
+    private String catagory_data;
+
+    public User(){
+
+    }
+
+    public User(String name, String time, String shortd, String fulld, String loc, String catagory){
+        this.name = name;
+        this.time = time;
+        this.shortDescript = shortd;
+        this.fullDescript = fulld;
+        this.location_data = loc;
+        this.catagory_data = catagory;
+    }
+
+    public String getName(){return name;}
+    public String getTime() {return time;}
+    public String getShortDescription(){return shortDescript;}
+    public String getFullDescription(){return fullDescript;}
+    public String getLocation(){return location_data;}
+    public String getCatagory(){return catagory_data;}
+
+  //  public String getName() { return _name; }
+  //  public void setName(String name) { _name = name; }
 
     public String getEmail() { return _email; }
     public void setEmail(String email) { _email = email; }
@@ -42,9 +69,9 @@ public class User {
 
     public User(String name, String email, String password) {this(name, email, password, UserType.GUEST);}
 
-    public User() {
-        this("enter name", "enter email", "enter password", UserType.GUEST);
+  //  public User() {
+     //   this("enter name", "enter email", "enter password", UserType.GUEST);
 
-    }
+  //  }
 
 }

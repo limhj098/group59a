@@ -13,6 +13,14 @@ import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class itemDisplayActivity extends AppCompatActivity implements View.OnClickListener{
 
     private String myTime;
@@ -21,6 +29,11 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
     private String fullDescription;
     private String location;
     private String catagory;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
 
 
 
@@ -31,7 +44,7 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
 
         Button buttonAddMore = (Button) findViewById(R.id.add_item);
         buttonAddMore.setOnClickListener(this);
-
+/*
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             myTime = extras.getString("time");
@@ -40,11 +53,9 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
             fullDescription = extras.getString("fullDescription");
             location = extras.getString("location");
             catagory = extras.getString("catagory");
-
         }
-
+*/
     }
-
     public void onClick(View view){
         submitClick();
     }

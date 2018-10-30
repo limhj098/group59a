@@ -36,6 +36,7 @@
         <activity android:name=".LocationsActivity" />
         <activity android:name=".DataEntryActivity"/>
         <activity android:name=".itemDisplayActivity"/>
+        <activity android:name=".AddToDatabase"/>
     </application>
 
 </manifest>

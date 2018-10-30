@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "176357235363-auipvvvcfoc10vbrbmksn02eln9dhl8e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hyejingracelim.donationtracker",
+            "certificate_hash": "abc0e7ddef0c9cc2c9719593fabf9f5e7abe9896"
+          }
+        },
+        {
           "client_id": "176357235363-s8spphq8eb5d882fqrim1psdfuor3ltp.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176357235363-s8spphq8eb5d882fqrim1psdfuor3ltp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
