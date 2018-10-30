@@ -44,6 +44,7 @@ public class DataEntryActivity extends AppCompatActivity {
     private EditText fullDescriptionField;
     private Spinner catagorySpinner;
     private Spinner locationSpinner;
+    private EditText priceField;
 
     private Button buttonSubmit;
 
@@ -53,11 +54,11 @@ public class DataEntryActivity extends AppCompatActivity {
     private String fullDescript;
     private String location_data;
     private String catagory_data;
+    private String price;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference myRef;
 
 
     @Override
@@ -72,6 +73,7 @@ public class DataEntryActivity extends AppCompatActivity {
         nameField = (EditText) findViewById(R.id.name);
         shortDescriptionField = (EditText) findViewById(R.id.short_description);
         fullDescriptionField = (EditText) findViewById(R.id.full_description);
+        priceField = (EditText) findViewById(R.id.value);
 
         locationSpinner = (Spinner) findViewById(R.id.location_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.locations);
@@ -102,13 +104,14 @@ public class DataEntryActivity extends AppCompatActivity {
         String fullDescript = fullDescriptionField.getText().toString().trim();
         String location_data = locationSpinner.getSelectedItem().toString();
         String catagory_data = catagorySpinner.getSelectedItem().toString();
+        String price = priceField.getText().toString().trim();
 
         if (!TextUtils.isEmpty(name)) {
             //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Artist
             String id = databaseUsers.push().getKey();
             //creating an Artist Object
-            User user = new User(name, time, shortDescript, fullDescript, location_data, catagory_data);
+            User user = new User(name, time, shortDescript, fullDescript, location_data, catagory_data, price);
             databaseUsers.child(id).setValue(user);
             //displaying a success toast
             Toast.makeText(this, "User Info added", Toast.LENGTH_LONG).show();
@@ -117,52 +120,6 @@ public class DataEntryActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
-/*
-    public void submitClick() {
-
-        //Add some way to store the data from the text fields
-        String time;
-        String name;
-        String shortDescript;
-        String fullDescript;
-        String location_data;
-        String catagory_data;
-
-        if (timeField.getText() != null) {
-            time = timeField.getText().toString();
-        }
-        if (nameField.getText() != null) {
-            name = nameField.getText().toString();
-        }
-        if (shortDescriptionField.getText() != null) {
-            shortDescript = shortDescriptionField.getText().toString();
-        }
-        if (fullDescriptionField.getText() != null) {
-            fullDescript = fullDescriptionField.getText().toString();
-        }
-
-        location_data = locationSpinner.getSelectedItem().toString();
-        catagory_data = catagorySpinner.getSelectedItem().toString();
-
-        //navigate to data load page to display the item that they have entered.
-        //will load diff item based on location that is entered into the textfield.
-      Intent i = new Intent(this,itemDisplayActivity.class);
-      i.putExtra("time", timeField.getText().toString());
-        i.putExtra("name", nameField.getText().toString());
-        i.putExtra("shortDescription", shortDescriptionField.getText().toString());
-        i.putExtra("fullDescription", fullDescriptionField.getText().toString());
-        i.putExtra("Location", locationSpinner.getSelectedItem().toString());
-        i.putExtra("Catagory", locationSpinner.getSelectedItem().toString());
-      startActivity(i);
-      finish();
-
-    }
-
-
-    public void onClick(View view){
-        submitClick();
-    }
-*/
 
     public void cancelClick(View view) {
         Intent i2 = new Intent(this, LocationsActivity.class);

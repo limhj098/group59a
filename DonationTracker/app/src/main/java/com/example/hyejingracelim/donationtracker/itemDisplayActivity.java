@@ -1,6 +1,5 @@
 package com.example.hyejingracelim.donationtracker;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,29 +11,26 @@ import android.widget.Spinner;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.support.v7.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class itemDisplayActivity extends AppCompatActivity implements View.OnClickListener{
+public class itemDisplayActivity extends AppCompatActivity {
 
-    private String myTime;
-    private String name;
-    private String shortDescription;
-    private String fullDescription;
-    private String location;
-    private String catagory;
+    private EditText searchField;
+    private Button searchButton;
+    private RecyclerView resultList;
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference myRef;
-
+    private DatabaseReference databaseUsers;
 
 
     @Override
@@ -42,20 +38,22 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_display_page);
 
+        searchField = (EditText) findViewById(R.id.searchBox);
+        searchButton = (Button) findViewById(R.id.searchButton);
+
+        resultList = (RecyclerView) findViewById(R.id.result_list);
+
         Button buttonAddMore = (Button) findViewById(R.id.add_item);
-        buttonAddMore.setOnClickListener(this);
 /*
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            myTime = extras.getString("time");
-            name = extras.getString("name");
-            shortDescription = extras.getString("shortDescription");
-            fullDescription = extras.getString("fullDescription");
-            location = extras.getString("location");
-            catagory = extras.getString("catagory");
-        }
-*/
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+            }
+        });
+        */
+
     }
+
     public void onClick(View view){
         submitClick();
     }

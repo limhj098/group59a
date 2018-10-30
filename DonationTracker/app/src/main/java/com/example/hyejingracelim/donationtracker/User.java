@@ -26,18 +26,20 @@ public class User {
     private String fullDescript;
     private String location_data;
     private String catagory_data;
+    private String price;
 
     public User(){
 
     }
 
-    public User(String name, String time, String shortd, String fulld, String loc, String catagory){
+    public User(String name, String time, String shortd, String fulld, String loc, String catagory, String price){
         this.name = name;
         this.time = time;
         this.shortDescript = shortd;
         this.fullDescript = fulld;
         this.location_data = loc;
         this.catagory_data = catagory;
+        this.price = price;
     }
 
     public String getName(){return name;}
@@ -46,6 +48,7 @@ public class User {
     public String getFullDescription(){return fullDescript;}
     public String getLocation(){return location_data;}
     public String getCatagory(){return catagory_data;}
+    public String getPrice(){return price; }
 
   //  public String getName() { return _name; }
   //  public void setName(String name) { _name = name; }
