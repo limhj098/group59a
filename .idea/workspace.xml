@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f1b3b1f-ee0d-4723-9f51-760624d411a0" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/DonationTracker/app/src/main/java/com/example/hyejingracelim/donationtracker/Item.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/DonationTracker/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/DonationTracker/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/DonationTracker/.idea/misc.xml" afterPath="$PROJECT_DIR$/DonationTracker/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/DonationTracker/app/src/main/java/com/example/hyejingracelim/donationtracker/DataEntryActivity.java" afterPath="$PROJECT_DIR$/DonationTracker/app/src/main/java/com/example/hyejingracelim/donationtracker/DataEntryActivity.java" />
-      <change beforePath="$PROJECT_DIR$/DonationTracker/app/src/main/java/com/example/hyejingracelim/donationtracker/itemDisplayActivity.java" afterPath="$PROJECT_DIR$/DonationTracker/app/src/main/java/com/example/hyejingracelim/donationtracker/itemDisplayActivity.java" />
-      <change beforePath="$PROJECT_DIR$/DonationTracker/app/src/main/res/layout/item_display_page.xml" afterPath="$PROJECT_DIR$/DonationTracker/app/src/main/res/layout/item_display_page.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,6 +17,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <push-targets>
+      <push-target-info target-remote="origin" target-branch="Chetan" repo="$PROJECT_DIR$" source="master" />
+    </push-targets>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -62,13 +61,89 @@
         <subPane>
           <expand>
             <path>
-              <item name="proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj" type="462c0819:PsiDirectoryNode" />
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj" type="462c0819:PsiDirectoryNode" />
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
               <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="hyejingracelim" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group59a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group59a" type="462c0819:PsiDirectoryNode" />
+              <item name="DonationTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="hyejingracelim" type="462c0819:PsiDirectoryNode" />
+              <item name="donationtracker" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -205,6 +280,14 @@
       <option name="presentableId" value="Default" />
       <updated>1536327782037</updated>
     </task>
+    <task id="LOCAL-00001" summary="made some more merge stuff">
+      <created>1540934138448</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540934138448</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -237,6 +320,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="made some more merge stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="made some more merge stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
