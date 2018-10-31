@@ -11,21 +11,6 @@ import android.widget.Spinner;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.text.TextUtils;
-
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,16 +21,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-
-
-import java.util.Arrays;
-import java.util.List;
-
-public class DataEntryActivity extends AppCompatActivity {
-
-    //private static final String TAG = "AddToDatabase";
-
-    private DatabaseReference databaseUsers;
+public class DataEntryActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText timeField;
     private EditText nameField;
@@ -53,35 +29,18 @@ public class DataEntryActivity extends AppCompatActivity {
     private EditText fullDescriptionField;
     private Spinner catagorySpinner;
     private Spinner locationSpinner;
-    private EditText priceField;
-
     private Button buttonSubmit;
-
-    private String time;
-    private String name;
-    private String shortDescript;
-    private String fullDescript;
-    private String location_data;
-    private String catagory_data;
-    private String price;
-
-    //private FirebaseDatabase mFirebaseDatabase;
-    //private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_entry);
-        //databaseUsers = FirebaseDatabase.getInstance().getReference("user data");
 
-        buttonSubmit = (Button) findViewById(R.id.submit);
         timeField = (EditText) findViewById(R.id.time);
         nameField = (EditText) findViewById(R.id.name);
         shortDescriptionField = (EditText) findViewById(R.id.short_description);
         fullDescriptionField = (EditText) findViewById(R.id.full_description);
-        priceField = (EditText) findViewById(R.id.value);
 
         locationSpinner = (Spinner) findViewById(R.id.location_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.locations);
@@ -93,43 +52,54 @@ public class DataEntryActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         catagorySpinner.setAdapter(adapter2);
 
-      //  buttonSubmit.setOnClickListener(this);
-        buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //calling the method addArtist()
-                //the method is defined below
-                //this method is actually performing the write operation
-                //addUserInfo();
-            }
-        });
-    }//onCreate
 
-    private void addUserInfo(){
-        String time = timeField.getText().toString().trim();
-        String name = nameField.getText().toString().trim();
-        String shortDescript = shortDescriptionField.getText().toString().trim();
-        String fullDescript = fullDescriptionField.getText().toString().trim();
-        String location_data = locationSpinner.getSelectedItem().toString();
-        String catagory_data = catagorySpinner.getSelectedItem().toString();
-        String price = priceField.getText().toString().trim();
+        buttonSubmit = (Button) findViewById(R.id.submit);
+        buttonSubmit.setOnClickListener(this);
+
+        //     Button buttonCancel = (Button) findViewById(R.id.cancel);
+        //   buttonCancel.setOnClickListener();
+    }
+
+    public void submitClick() {
+
+        //Add some way to store the data from the text fields
+        String time;
+        String name;
+        String shortDescript;
+        String fullDescript;
+        String location_data;
+        String catagory_data;
+
+        if (timeField.getText() != null) {
+            time = timeField.getText().toString();
+        }
+        else time = "not set";
+        if (nameField.getText() != null) {
+            name = nameField.getText().toString().concat(" : ").concat(shortDescriptionField.getText().toString());
+        }
+        else name = "not set";
+        if (shortDescriptionField.getText() != null) {
+            shortDescript = shortDescriptionField.getText().toString();
+        }
+        else shortDescript = "not set";
+        if (fullDescriptionField.getText() != null) {
+            fullDescript = fullDescriptionField.getText().toString();
+        }
+        else fullDescript = "not set";
+        location_data = locationSpinner.getSelectedItem().toString();
+        catagory_data = catagorySpinner.getSelectedItem().toString();
+
+        //navigate to data load page to display the item that they have entered.
+        //will load diff item based on location that is entered into the textfield.
         Item a = new Item();
         a.donationTime = time;
         a.location = location_data;
         a.catagory = catagory_data;
         a.longDescription = fullDescript;
         a.shortDescription = shortDescript;
-        a.value = price;
-        //if (!TextUtils.isEmpty(name)) {
-            //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Artist
-            //String id = databaseUsers.push().getKey();
-            //creating an Artist Object
-            //User user = new User(name, time, shortDescript, fullDescript, location_data, catagory_data, price);
-            //databaseUsers.child(id).setValue(user);
-            //displaying a success toast
-            //Toast.makeText(this, "User Info added", Toast.LENGTH_LONG).show();
-        //}
+
+
+
         try {
             // Creates a file in the primary external storage space of the
             // current application.
@@ -168,8 +138,18 @@ public class DataEntryActivity extends AppCompatActivity {
 
         } catch (Exception e) { }
         Intent i = new Intent(this,itemDisplayActivity.class);
+        i.putExtra("time", timeField.getText().toString());
+        i.putExtra("name", nameField.getText().toString());
+        i.putExtra("shortDescription", shortDescriptionField.getText().toString());
+        i.putExtra("fullDescription", fullDescriptionField.getText().toString());
+        i.putExtra("Location", locationSpinner.getSelectedItem().toString());
+        i.putExtra("Catagory", locationSpinner.getSelectedItem().toString());
         startActivity(i);
         finish();
+    }
+
+    public void onClick(View view){
+        submitClick();
     }
 
     public void cancelClick(View view) {
