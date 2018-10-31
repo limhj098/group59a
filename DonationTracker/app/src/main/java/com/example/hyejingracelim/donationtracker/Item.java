@@ -10,6 +10,10 @@ public class Item implements Serializable {
     public String longDescription;
     public String catagory;
 
+    public Item(){
+
+    }
+
     @Override
     public String toString() {
         if (donationTime != null){
