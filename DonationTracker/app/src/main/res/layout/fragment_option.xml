@@ -40,4 +40,10 @@
         android:layout_height="wrap_content"
         android:text="View Items" />
 
+    <Button
+        android:id="@+id/search"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
 </LinearLayout>

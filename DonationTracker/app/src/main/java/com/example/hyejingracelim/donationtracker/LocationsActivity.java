@@ -25,7 +25,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     static boolean loadData = false;
     static ArrayList<String[]>  allData = new ArrayList<String[]>();
     static ArrayList<String>  list = null;
-    static String []  detailedList ;
+    static String []  detailedList;
 
 
     @Override

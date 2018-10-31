@@ -30,6 +30,7 @@ public class OptionFrag extends Fragment{
 
         final Button button = (Button) v.findViewById(R.id.data_entry_button);
         final Button button1 = (Button) v.findViewById(R.id.viewItems);
+        final Button search = (Button) v.findViewById(R.id.search);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i2 = new Intent(getActivity(),DataEntryActivity.class);
@@ -42,6 +43,15 @@ public class OptionFrag extends Fragment{
                 startActivity(i3);
                 // getActivity().finish();
             }});
+
+        search.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i4 = new Intent(getActivity(),SearchActivity.class);
+                startActivity(i4);
+                // getActivity().finish();
+            }});
+
+
         return v;
     }
 
