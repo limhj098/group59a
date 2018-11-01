@@ -13,7 +13,7 @@ public class User {
             "Other");
 
     public static List<String> locations = Arrays.asList("Location 1", "Location 2", "Location 3", "Location 4", "Location 5",
-            "Location 6");
+            "Location 6", "ALL");
 
     private String _name;
     private String _email;

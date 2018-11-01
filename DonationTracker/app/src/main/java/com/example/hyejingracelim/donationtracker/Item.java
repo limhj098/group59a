@@ -3,16 +3,13 @@ package com.example.hyejingracelim.donationtracker;
 import java.io.Serializable;
 
 public class Item implements Serializable {
+
     public String donationTime;
     public String location;
     public String value;
     public String shortDescription;
     public String longDescription;
     public String catagory;
-
-    public Item(){
-
-    }
 
     @Override
     public String toString() {
@@ -40,11 +37,4 @@ public class Item implements Serializable {
         }
         else return "Time not Recorded";
     }
-    public String getDonationTime(){return donationTime;}
-    public String getLocation() {return location;}
-    public String getValue(){return value;}
-    public String getshortDescription(){return shortDescription;}
-    public String getLongDescription(){return longDescription;}
-    public String getCatagory(){return catagory;}
-
 }

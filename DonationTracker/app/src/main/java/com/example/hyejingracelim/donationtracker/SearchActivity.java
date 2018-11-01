@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class SearchActivity extends AppCompatActivity {
@@ -57,63 +58,140 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.catagories);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         catagorySpinner.setAdapter(adapter2);
-
-
-        FileInputStream fis = openFileInput("itemInfo");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
-        ois.close();
-        fis.close();
-
-        FileOutputStream ofi = openFileOutput("itemInfo",0);
-        ObjectOutputStream oos = new ObjectOutputStream(ofi);
-        HashMap<String, Item> test = itemInfo;
-        test.put(name, a);
-        oos.writeObject(test);
-        oos.close();
-        ofi.close();
-
         locationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Item item = new Item();
-                String location_data = locationSpinner.getSelectedItem().toString();
-                Map<String, Integer> filteredMap = filterByValue(itemInfo, item.getLocation() -> item.getLocation().equals(location_data));
 
-                TextView tv = (TextView) findViewById(R.id.textView4);
-                ListView lv = (ListView) findViewById(R.id.searchResult);
-                lv.setClickable(true);
 
-                FileInputStream fis = openFileInput("filteredMap");
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                final HashMap<String, Item> filteredMap = (HashMap<String, Item>) ois.readObject();
-
-                ois.close();
-                fis.close();
-
-                Set<String> itemSet = filteredMap.keySet();
-                List<String> itemList = new ArrayList<>(itemSet);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        this,
-                        android.R.layout.simple_list_item_1,
-                        itemList
-                );
-                lv.setAdapter(arrayAdapter);
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String g = (String) lv.getItemAtPosition(position);
-                        Item currentItem = filteredMap.get(g);
-                        tv.setText(currentItem.toString());
+                try {
+                    FileInputStream fis = openFileInput("itemInfo");
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+                    ois.close();
+                    fis.close();
+                    String location_data = locationSpinner.getSelectedItem().toString();
+                    final HashMap<String, Item> filteredMap = new HashMap<>();
+                    for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
+                        if (entry.getValue().location.equals(location_data)) {
+                            filteredMap.put(entry.getKey(),entry.getValue());
+                        }
                     }
-                });
+                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
+                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    lv1.setClickable(true);
+                    ois.close();
+                    fis.close();
+                    Set<String> itemSet = filteredMap.keySet();
+                    List<String> itemList = new ArrayList<>(itemSet);
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                            getBaseContext(),
+                            android.R.layout.simple_list_item_1,
+                            itemList
+                    );
+                    lv1.setAdapter(arrayAdapter1);
+                    lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String g = (String) lv1.getItemAtPosition(position);
+                            Item currentItem = filteredMap.get(g);
+                            tv1.setText(currentItem.toString());
+                        }
+                    });
+                }
+                catch(Exception e){};
 
               //  assertEquals(expectedMap, filteredMap);
                // catagory_data = catagorySpinner.getSelectedItem().toString();
-
-            }});
-
+            }
 
 
+        });
+        catagoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    FileInputStream fis = openFileInput("itemInfo");
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+                    ois.close();
+                    fis.close();
+                    String catagory_data = catagorySpinner.getSelectedItem().toString();
+                    final HashMap<String, Item> filteredMap2 = new HashMap<>();
+                    for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
+                        if (entry.getValue().catagory.equals(catagory_data)) {
+                            filteredMap2.put(entry.getKey(),entry.getValue());
+                        }
+                    }
+                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
+                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    lv1.setClickable(true);
+                    ois.close();
+                    fis.close();
+                    Set<String> itemSet = filteredMap2.keySet();
+                    List<String> itemList = new ArrayList<>(itemSet);
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                            getBaseContext(),
+                            android.R.layout.simple_list_item_1,
+                            itemList
+                    );
+                    lv1.setAdapter(arrayAdapter1);
+                    lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String g = (String) lv1.getItemAtPosition(position);
+                            Item currentItem = filteredMap2.get(g);
+                            tv1.setText(currentItem.toString());
+                        }
+                    });
+                }
+                catch(Exception e){};
+                //  assertEquals(expectedMap, filteredMap);
+                // catagory_data = catagorySpinner.getSelectedItem().toString();
+            }
 
+        });
+        itemNameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    FileInputStream fis = openFileInput("itemInfo");
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+                    ois.close();
+                    fis.close();
+                    String name_data = itemNameSearch.toString();
+                    final HashMap<String, Item> filteredMap3 = new HashMap<>();
+                    for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
+                        if (entry.getKey().equalsIgnoreCase(name_data)) {
+                            filteredMap3.put(entry.getKey(),entry.getValue());
+                        }
+                    }
+                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
+                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    lv1.setClickable(true);
+                    ois.close();
+                    fis.close();
+                    Set<String> itemSet = filteredMap3.keySet();
+                    List<String> itemList = new ArrayList<>(itemSet);
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                            getBaseContext(),
+                            android.R.layout.simple_list_item_1,
+                            itemList
+                    );
+                    lv1.setAdapter(arrayAdapter1);
+                    lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String g = (String) lv1.getItemAtPosition(position);
+                            Item currentItem = filteredMap3.get(g);
+                            tv1.setText(currentItem.toString());
+                        }
+                    });
+                }
+                catch(Exception e){};
+                //  assertEquals(expectedMap, filteredMap);
+                // catagory_data = catagorySpinner.getSelectedItem().toString();
+            }
+
+        });
     }
 }

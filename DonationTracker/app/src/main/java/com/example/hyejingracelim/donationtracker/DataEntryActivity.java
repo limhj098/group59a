@@ -75,7 +75,7 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         }
         else time = "not set";
         if (nameField.getText() != null) {
-            name = nameField.getText().toString().concat(" : ").concat(shortDescriptionField.getText().toString());
+            name = nameField.getText().toString();
         }
         else name = "not set";
         if (shortDescriptionField.getText() != null) {
