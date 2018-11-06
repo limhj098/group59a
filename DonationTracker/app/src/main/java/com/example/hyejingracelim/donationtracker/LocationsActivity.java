@@ -22,6 +22,7 @@ import static com.example.hyejingracelim.donationtracker.ListFrag.list;
 
 public class LocationsActivity extends AppCompatActivity implements ListFrag.itemSelected {
 
+    //removed static from these
     static boolean loadData = false;
     static ArrayList<String[]>  allData = new ArrayList<String[]>();
     static ArrayList<String>  list = null;
@@ -75,8 +76,8 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         // Handling exceptions
         try {
             // If buffer is not empty
-
-            while ((line = br.readLine()) != null) {
+            line = br.readLine();
+            while (line != null) {  //used to be line = br.readLine() in while
                 // use comma as separator columns of CSV
                 String[] cols = line.split(",");
                 // Print in logcat
@@ -93,22 +94,16 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     @Override
     public void onItemSelection(int index) {
 
-
-            // ListView lv = findViewById(R.id.listDet);
-            //Log.d("Moose",Arrays.toString(detailedList)+" >>>>>>");
-
-//            detailedList = new String[allData.get(index).length];
-            index +=1;
-            detailedList = allData.get(index).clone();
+        index += 1;
+        detailedList = allData.get(index).clone();
 
 
-            Log.d("Moose", Arrays.toString(allData.get(index))+" The data for the location:"+index);
+        Log.d("Moose", Arrays.toString(allData.get(index))+" The data for the location:"+index);
 
 //
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
 
     }
 

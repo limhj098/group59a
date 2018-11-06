@@ -7,32 +7,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.Serializable;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Class Displays Items to Screen
+ */
 public class itemDisplayActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String myTime;
-    private String name;
-    private String shortDescription;
-    private String fullDescription;
-    private String location;
-    private String catagory;
     private ListView lv;
     private TextView tv;
 
@@ -43,19 +34,22 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_display_page);
         try {
-            tv = (TextView) findViewById(R.id.itemAttributes);
-            lv = (ListView) findViewById(R.id.itemList);
+            tv = findViewById(R.id.itemAttributes);
+            lv = findViewById(R.id.itemList);
             lv.setClickable(true);
 
             FileInputStream fis = openFileInput("itemInfo");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+
+
+            final Map<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
 
             ois.close();
             fis.close();
             Set<String> itemSet = itemInfo.keySet();
             List<String> itemList = new ArrayList<>(itemSet);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                    //Cant change because ArrayAdapter takes in generics while List does not
                     this,
                     android.R.layout.simple_list_item_1,
                     itemList
@@ -66,32 +60,25 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String g = (String) lv.getItemAtPosition(position);
                     Item currentItem = itemInfo.get(g);
-                    tv.setText(currentItem.toString());
+                    if (currentItem != null) {
+                        tv.setText(currentItem.toString());
+                    }
                 }
             });
         }
         catch(Exception e) {
+            e.printStackTrace();
         }
-        Button buttonAddMore = (Button) findViewById(R.id.add_item);
+        Button buttonAddMore = findViewById(R.id.add_item);
         buttonAddMore.setOnClickListener(this);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            myTime = extras.getString("time");
-            name = extras.getString("name");
-            shortDescription = extras.getString("shortDescription");
-            fullDescription = extras.getString("fullDescription");
-            location = extras.getString("location");
-            catagory = extras.getString("catagory");
-        }
-
     }
 
+    @Override
     public void onClick(View view){
         submitClick();
     }
 
-    public void submitClick() {
+    private void submitClick() {
         Intent i = new Intent(this, DataEntryActivity.class);
         startActivity(i);
         finish();
