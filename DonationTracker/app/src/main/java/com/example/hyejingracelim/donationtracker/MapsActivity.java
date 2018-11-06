@@ -9,6 +9,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
+import android.view.Gravity;
+import android.widget.Toast;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -45,12 +48,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng PAV = new LatLng(33.80129,-84.25537);
         LatLng CON = new LatLng(33.71747,-84.2521);
         LatLng BEA = new LatLng(33.96921,-84.3688);
-        mMap.addMarker(new MarkerOptions().position(AFD).title("AFD Station"));
-        mMap.addMarker(new MarkerOptions().position(BNG).title("BOYS & GILRS CLUB W.W. WOOLFOLK"));
-        mMap.addMarker(new MarkerOptions().position(MIN).title("PATHWAY UPPER ROOM CHRISTIAN MINISTRIES"));
-        mMap.addMarker(new MarkerOptions().position(PAV).title("PAVILION OF HOPE INC"));
-        mMap.addMarker(new MarkerOptions().position(CON).title("D&D CONVENIENCE STORE"));
-        mMap.addMarker(new MarkerOptions().position(BEA).title("KEEP NORTH FULTON BEAUTIFUL"));
+
+        mMap.addMarker(new MarkerOptions().position(AFD).title("AFD Station").snippet("Phone Number: (404) 555 - 3456"));
+        mMap.addMarker(new MarkerOptions().position(BNG).title("BOYS & GILRS CLUB W.W. WOOLFOLK").snippet("Phone Number: (404) 555 - 1234"));
+        mMap.addMarker(new MarkerOptions().position(MIN).title("PATHWAY UPPER ROOM CHRISTIAN MINISTRIES").snippet("Phone Number: (404) 555 - 5432"));
+        mMap.addMarker(new MarkerOptions().position(PAV).title("PAVILION OF HOPE INC").snippet("Phone Number: (404) 555 - 8765"));
+        mMap.addMarker(new MarkerOptions().position(CON).title("D&D CONVENIENCE STORE").snippet("Phone Number:(404) 555 - 9876"));
+        mMap.addMarker(new MarkerOptions().position(BEA).title("KEEP NORTH FULTON BEAUTIFUL").snippet("Phone Number: (770) 555 - 7321"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(AFD));
     }
 }
