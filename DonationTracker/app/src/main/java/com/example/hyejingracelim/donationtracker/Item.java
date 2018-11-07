@@ -2,6 +2,9 @@ package com.example.hyejingracelim.donationtracker;
 
 import java.io.Serializable;
 
+/**
+ * Stores item information
+ */
 public class Item implements Serializable {
 
     public String donationTime;
@@ -11,30 +14,36 @@ public class Item implements Serializable {
     public String longDescription;
     public String category;
 
+    /**
+     * Converts item to string
+     * @return item as string
+     */
     @Override
     public String toString() {
         if (donationTime != null){
             String ans = "";
-            ans = ans.concat("Time : ");
-            ans = ans.concat(donationTime);
+            ans = ans + "Time : ";
+            ans = ans + donationTime;
             if (location != null){
-                ans = ans.concat(" Location : ");
-                ans = ans.concat(location);
+                ans = ans + " Location : ";
+                ans = ans + location;
             }
             if (category != null){
-                ans = ans.concat(" Category : ");
-                ans = ans.concat(category);
+                ans = ans + " Category : ";
+                ans = ans + category;
             }
             if (longDescription != null){
-                ans = ans.concat(" Description : ");
-                ans = ans.concat(longDescription);
+                ans = ans + " Description : ";
+                ans = ans + longDescription;
             }
             if (value != null){
-                ans = ans.concat(" Value : ");
-                ans = ans.concat(value);
+                ans = ans + " Value : ";
+                ans = ans + value;
             }
             return ans;
         }
-        else return "Time not Recorded";
+        else {
+            return "Time not Recorded";
+        }
     }
 }

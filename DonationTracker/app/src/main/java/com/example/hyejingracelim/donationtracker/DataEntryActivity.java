@@ -104,7 +104,6 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         a.category = category_data;
         a.longDescription = fullDescription;
         a.shortDescription = shortDescription;
-
         try {
             // Creates a file in the primary external storage space of the
             // If the file does not exists, it is created.

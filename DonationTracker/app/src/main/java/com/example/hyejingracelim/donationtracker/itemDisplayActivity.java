@@ -28,6 +28,8 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
     private TextView tv;
 
 
+
+
     /**
      * Displays the Item on the screen on the creation of this activity.
      * @param savedInstanceState
