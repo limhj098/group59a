@@ -28,7 +28,10 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
     private TextView tv;
 
 
-
+    /**
+     * Displays the Item on the screen on the creation of this activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,11 +76,18 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
         buttonAddMore.setOnClickListener(this);
     }
 
+    /**
+     * On click of button, run submit click.
+     * @param view
+     */
     @Override
     public void onClick(View view){
         submitClick();
     }
 
+    /**
+     * Clicking submit will start a new intent to DataEntryActivity.
+     */
     private void submitClick() {
         Intent i = new Intent(this, DataEntryActivity.class);
         startActivity(i);

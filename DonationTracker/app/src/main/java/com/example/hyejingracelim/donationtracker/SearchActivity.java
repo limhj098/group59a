@@ -30,9 +30,9 @@ import java.util.Set;
 public class SearchActivity extends AppCompatActivity {
 
     private Button locationButton;
-    private Button catagoryButton;
+    private Button categoryButton;
     private Button itemNameButton;
-    private Spinner catagorySpinner;
+    private Spinner categorySpinner;
     private Spinner locationSpinner;
     private EditText itemNameSearch;
 
@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_page);
 
         final Button locationButton = (Button) findViewById(R.id.button3);
-        final Button catagoryButton = (Button) findViewById(R.id.button4);
+        final Button categoryButton = (Button) findViewById(R.id.button4);
         final Button itemNameButton = (Button) findViewById(R.id.button5);
 
         itemNameSearch = (EditText) findViewById(R.id.itemName);
@@ -54,10 +54,10 @@ public class SearchActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(adapter);
 
-        catagorySpinner = (Spinner) findViewById(R.id.catagory);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.catagories);
+        categorySpinner = (Spinner) findViewById(R.id.category);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.categories);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        catagorySpinner.setAdapter(adapter2);
+        categorySpinner.setAdapter(adapter2);
         locationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -100,12 +100,11 @@ public class SearchActivity extends AppCompatActivity {
                 catch(Exception e){};
 
               //  assertEquals(expectedMap, filteredMap);
-               // catagory_data = catagorySpinner.getSelectedItem().toString();
             }
 
 
         });
-        catagoryButton.setOnClickListener(new View.OnClickListener() {
+        categoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -114,10 +113,10 @@ public class SearchActivity extends AppCompatActivity {
                     final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
-                    String catagory_data = catagorySpinner.getSelectedItem().toString();
+                    String category_data = categorySpinner.getSelectedItem().toString();
                     final HashMap<String, Item> filteredMap2 = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
-                        if (entry.getValue().catagory.equals(catagory_data)) {
+                        if (entry.getValue().category.equals(category_data)) {
                             filteredMap2.put(entry.getKey(),entry.getValue());
                         }
                     }
@@ -145,7 +144,7 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 catch(Exception e){};
                 //  assertEquals(expectedMap, filteredMap);
-                // catagory_data = catagorySpinner.getSelectedItem().toString();
+
             }
 
         });
@@ -189,7 +188,6 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 catch(Exception e){};
                 //  assertEquals(expectedMap, filteredMap);
-                // catagory_data = catagorySpinner.getSelectedItem().toString();
             }
 
         });

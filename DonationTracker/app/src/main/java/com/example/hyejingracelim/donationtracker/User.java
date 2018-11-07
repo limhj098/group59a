@@ -9,7 +9,7 @@ public class User {
     public static List<String> legalUsers = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manger",
             "Warehouse Employee", "Donation Recorder Employee");
 
-    public static List<String> catagories = Arrays.asList("Clothing", "Hat", "Electronics", "Kitchen", "Household",
+    public static List<String> categories = Arrays.asList("Clothing", "Hat", "Electronics", "Kitchen", "Household",
             "Other");
 
     public static List<String> locations = Arrays.asList("Location 1", "Location 2", "Location 3", "Location 4", "Location 5",
@@ -25,20 +25,20 @@ public class User {
     private String shortDescript;
     private String fullDescript;
     private String location_data;
-    private String catagory_data;
+    private String category_data;
     private String price;
 
     public User(){
 
     }
 
-    public User(String name, String time, String shortd, String fulld, String loc, String catagory, String price){
+    public User(String name, String time, String shortd, String fulld, String loc, String category, String price){
         this.name = name;
         this.time = time;
         this.shortDescript = shortd;
         this.fullDescript = fulld;
         this.location_data = loc;
-        this.catagory_data = catagory;
+        this.category_data = category;
         this.price = price;
     }
 
@@ -47,7 +47,7 @@ public class User {
     public String getShortDescription(){return shortDescript;}
     public String getFullDescription(){return fullDescript;}
     public String getLocation(){return location_data;}
-    public String getCatagory(){return catagory_data;}
+    public String getCategory(){return category_data;}
     public String getPrice(){return price; }
 
   //  public String getName() { return _name; }

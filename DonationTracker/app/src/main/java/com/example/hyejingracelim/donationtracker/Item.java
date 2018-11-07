@@ -9,7 +9,7 @@ public class Item implements Serializable {
     public String value;
     public String shortDescription;
     public String longDescription;
-    public String catagory;
+    public String category;
 
     @Override
     public String toString() {
@@ -21,9 +21,9 @@ public class Item implements Serializable {
                 ans = ans.concat(" Location : ");
                 ans = ans.concat(location);
             }
-            if (catagory != null){
-                ans = ans.concat(" Catagory : ");
-                ans = ans.concat(catagory);
+            if (category != null){
+                ans = ans.concat(" Category : ");
+                ans = ans.concat(category);
             }
             if (longDescription != null){
                 ans = ans.concat(" Description : ");
