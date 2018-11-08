@@ -37,10 +37,6 @@
             android:name=".RegistrationActivity"
             android:label="@string/title_activity_user"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoadFileActivity"
-            android:label="LoadFileActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LocationsActivity" />
         <activity android:name=".DataEntryActivity" />
         <activity android:name=".itemDisplayActivity" />
