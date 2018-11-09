@@ -15,12 +15,24 @@ import static org.junit.Assert.*;
 public class fredaTest {
 
     @Test
-    public void readDataMethodTest() {
+    public void itemToString_returnEmpty() {
+        Item someItem = new Item();
 
-        list = new ArrayList<String>();
-        Context appContext = InstrumentationRegistry.getTargetContext();
+        assertEquals(someItem.toString(), "");
+    }
 
-        assertEquals("com.example.hyejingracelim.donationtracker", appContext.getPackageName());
+    @Test
+    public void testToString() {
+        Item a = new Item();
+        a.donationTime = "5:00pm";
+        a.location = "location 1";
+        a.category = "Clothes";
+        a.longDescription = "A Yellow sundress with polka dots";
+        a.value = "$5";
+
+        assertEquals(a.toString(), "Time : " + a.donationTime + " Location : " + a.location
+                        + " Category : " + a.category + " Description : " + a.longDescription
+                        + " Value : " + a.value);
     }
 
 }
