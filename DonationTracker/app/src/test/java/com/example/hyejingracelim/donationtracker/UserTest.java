@@ -3,7 +3,12 @@ package com.example.hyejingracelim.donationtracker;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/**
+ * @version 11/8/18
+ * @author group59a
+ * Class that differentiates the different users that can log in
+ * Stores information about different users
+ */
 public class UserTest {
 
     @Test
