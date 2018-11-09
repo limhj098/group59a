@@ -29,12 +29,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import android.app.ProgressDialog;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +48,11 @@ import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
+ *
+ * Warnings:
+ *
+ * Android: Lint: Performance: Static Field Leaks:
+ *  Is dependent on class LoginActivity and cannot rework logic
  */
 
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
@@ -79,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private boolean accessGranted; // goes true after correct info entering
 
-    private int numberOfCalls = 0;
+    private int numberOfCalls;
 
     private FirebaseAuth firebaseAuth;
 
@@ -106,8 +108,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
-        ProgressDialog progressDialog = new ProgressDialog(this);
+//        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
+//        ProgressDialog progressDialog = new ProgressDialog(this);
 
         /* mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -159,12 +161,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(i2);
     }
 
+//    public void setAccessGranted(){
+//        accessGranted = false;
+//    }
+
     /**
-     *
+     * Warnings:
+     * Code style issues: Chained method calls:
+     *  Chained method call 'initLoader()' cannot be reworked because it is amongst 12 other chained
+     *  method calls
      */
-    public void setAccessGranted(){
-        accessGranted = false;
-    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -172,6 +178,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         getLoaderManager().initLoader(0, null, this);
     }
+    /**
+     * Warnings:
+     * Code style issues: Chained method calls:
+     *  Chained method call 'setAction()' cannot be reworked because it is amongst 12 other chained
+     *  method calls
+     */
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -202,7 +214,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if ((grantResults.length == 1)
+                    && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 populateAutoComplete();
             }
         }
@@ -213,7 +226,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
+     *
+     * Warnings:
+     *  Code style issues: Chained method calls:
+     *      Chained method call 'initLoader()' cannot be reworked because it is amongst 12 other
+     *      chained method calls
+     *
+     *      Chained method call 'addOnCompleteListener()' cannot be reworked because it is amongst
+     *      12 other chained method calls
+     *
+     *      Chained method call 'show()' cannot be reworked because it is amongst
+     *      12 other chained method calls
+     *
      */
+
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -297,31 +324,52 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return password.length() > 4;
     }
 
+
     /**
+     *
      * Shows the progress UI and hides the login form.
+     * Warnings:
+     *  Code style issues: Chained method calls:
+     *      Chained method call 'initLoader()' cannot be reworked because it is amongst 12 other
+     *
+     *
+     *      Chained method call 'setDuration()' cannot be reworked because it is amongst 12 other
+     *      chained method calls
+     *
+     *      Chained method call 'alpha()' cannot be reworked because it is amongst 12 other
+     *      chained method calls
+     *
+     *      Chained method call 'setListener()' cannot be reworked because it is amongst 12 other
+     *      chained method calls
+     *
+     *      Chained method call 'setDuration()' cannot be reworked because it is amongst 12 other
+     *      chained method calls
      */
+
+
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
+    private void showProgress() {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
         int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        mLoginFormView.setVisibility(View.VISIBLE);
         mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                1).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                mLoginFormView.setVisibility(View.VISIBLE);
             }
         });
 
-        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        mProgressView.setVisibility(View.GONE);
         mProgressView.animate().setDuration(shortAnimTime).alpha(
-                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                0).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                mProgressView.setVisibility(View.GONE);
             }
         });
     }
@@ -377,19 +425,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
+//        int IS_PRIMARY = 1;
     }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      *
-     * Cannot make class static because non-static fields mAuthTask and mPasswordView cannot be
-     * referenced by static content
+     * Warnings:
      *
-     * Magic number error is set from template, cannot be changed
+     * Android: Lint: Performance: Static Field Leaks:
+     *      Is dependent on class LoginActivity and cannot rework logic
+     *      Cannot make class static because non-static fields mAuthTask and mPasswordView cannot be
+     *      referenced by static content
+     *
+     *  Java: Abstraction issues: Magic number: number is set from template, cannot be changed
+     *
+     *  Java: Declaration redundancy: Unused declaration:
+     *      Although UserLoginTask constructor is never used, code breaks if commented out
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -425,7 +480,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
-            showProgress(false);
+            showProgress();
 
             if (success) {
                 finish();
@@ -438,7 +493,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onCancelled() {
             mAuthTask = null;
-            showProgress(false);
+            showProgress();
         }
     }
 }
