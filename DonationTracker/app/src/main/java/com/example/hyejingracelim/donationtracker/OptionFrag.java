@@ -28,10 +28,10 @@ public class OptionFrag extends Fragment{
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_option, container, false);
 
-        final Button button = (Button) v.findViewById(R.id.data_entry_button);
-        final Button button1 = (Button) v.findViewById(R.id.viewItems);
-        final Button search = (Button) v.findViewById(R.id.search);
-        final Button map = (Button) v.findViewById(R.id.map);
+        final Button button = v.findViewById(R.id.data_entry_button);
+        final Button button1 = v.findViewById(R.id.viewItems);
+        final Button search = v.findViewById(R.id.search);
+        final Button map = v.findViewById(R.id.map);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i2 = new Intent(getActivity(),DataEntryActivity.class);
