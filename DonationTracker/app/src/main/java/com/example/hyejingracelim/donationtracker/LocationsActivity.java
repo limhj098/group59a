@@ -40,7 +40,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         loadData =true;
         list =new ArrayList<String>();
 
-        ArrayList<String[]>  allData= readCSV();
+        ArrayList<String[]>  allData = readCSV();
         Log.d("Moose",Arrays.toString(allData.get(0)));
         Toast.makeText(getApplicationContext(),"Data have been loaded successfully",Toast.LENGTH_LONG).show();
 
@@ -56,10 +56,6 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         finish();
         startActivity(intent);
 
-
-//
-//        ListFrag l = new ListFrag();
-//        l.onActivityCreated(null);
     }
 
     public ArrayList<String[]> readCSV(){

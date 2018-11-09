@@ -51,29 +51,32 @@ public class SearchActivity extends AppCompatActivity {
         itemNameSearch = findViewById(R.id.itemName);
 
         locationSpinner = findViewById(R.id.location);
-        //noinspection unchecked
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.locations);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter
+                (this,android.R.layout.simple_spinner_item, User.locations);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(adapter);
 
         categorySpinner = findViewById(R.id.category);
-        //noinspection unchecked
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.categories);
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter
+                (this,android.R.layout.simple_spinner_item, User.categories);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter2);
         locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
 
 
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
-                    //noinspection unchecked
-                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+
+                    final Map<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
                     String location_data = locationSpinner.getSelectedItem().toString();
-                    final HashMap<String, Item> filteredMap = new HashMap<>();
+                    final Map<String, Item> filteredMap = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
                         if (entry.getValue().location.equals(location_data)) {
                             filteredMap.put(entry.getKey(),entry.getValue());
@@ -94,7 +97,8 @@ public class SearchActivity extends AppCompatActivity {
                     lv1.setAdapter(arrayAdapter1);
                     lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        public void onItemClick
+                                (AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap.get(g);
                             assert currentItem != null;
@@ -120,12 +124,12 @@ public class SearchActivity extends AppCompatActivity {
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
-                    //noinspection unchecked
-                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+
+                    final Map<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
                     String category_data = categorySpinner.getSelectedItem().toString();
-                    final HashMap<String, Item> filteredMap2 = new HashMap<>();
+                    final Map<String, Item> filteredMap2 = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
                         if (entry.getValue().category.equals(category_data)) {
                             filteredMap2.put(entry.getKey(),entry.getValue());
@@ -153,7 +157,8 @@ public class SearchActivity extends AppCompatActivity {
                          * @param id A long of the position.
                          */
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        public void onItemClick
+                        (AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap2.get(g);
                             assert currentItem != null;
@@ -177,12 +182,12 @@ public class SearchActivity extends AppCompatActivity {
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
-                    //noinspection unchecked
-                    final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
+
+                    final Map<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
                     String name_data = itemNameSearch.toString();
-                    final HashMap<String, Item> filteredMap3 = new HashMap<>();
+                    final Map<String, Item> filteredMap3 = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
                         if (entry.getKey().equalsIgnoreCase(name_data)) {
                             filteredMap3.put(entry.getKey(),entry.getValue());
@@ -210,7 +215,8 @@ public class SearchActivity extends AppCompatActivity {
                          * @param id A long of the position.
                          */
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        public void onItemClick
+                        (AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap3.get(g);
                             assert currentItem != null;
