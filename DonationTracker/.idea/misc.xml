@@ -1,43 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="EntryPointsManager">
-    <entry_points version="2.0">
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType ADMIN" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType BRANCH_MANAGER" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType CUSTOMER" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType DONATION_RECORDER_EMPLOYEE" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType DONATOR" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType WAREHOUSE_EMPLOYEE" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity categoryButton" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity itemNameButton" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity locationButton" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity results" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity categorySpinner" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity itemNameSearch" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity locationSpinner" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User categories" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User legalUsers" />
-      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User locations" />
-    </entry_points>
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getEmail" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getCategory" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getFullDescription" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getLocation" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getName" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getPassword" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getPrice" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getShortDescription" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getTime" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getUserName" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="getUserType" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="setEmail" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="setPassword" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" method="setUserType" />
-    <pattern value="com.example.hyejingracelim.donationtracker.User" />
-    <pattern value="com.example.hyejingracelim.donationtracker.UserType" />
-    <pattern value="com.example.hyejingracelim.donationtracker.SearchActivity" method="onCreate" />
-    <pattern value="com.example.hyejingracelim.donationtracker.SearchActivity" />
-  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
