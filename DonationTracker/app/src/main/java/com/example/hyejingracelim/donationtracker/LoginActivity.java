@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     /**
      * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
+
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
@@ -68,15 +69,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+    @Nullable
+    private UserLoginTask mAuthTask;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private boolean accessGranted=false; // goes true after correct info entering
-    private ProgressDialog progressDialog;
+    private boolean accessGranted; // goes true after correct info entering
 
     private int numberOfCalls = 0;
 
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+                if ((id == EditorInfo.IME_ACTION_DONE) || (id == EditorInfo.IME_NULL)) {
                     attemptLogin();
                     return true;
                 }
@@ -106,14 +107,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
-        progressDialog = new ProgressDialog(this);
+        ProgressDialog progressDialog = new ProgressDialog(this);
 
-        /**
-         *  R. changed this anonymous click method to a public one
-         *  So 'this' can be called to switch activities
-         */
-
-       /* mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        /* mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -133,12 +129,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     *
     * This maybe developed later to save what needs to be saved before
     * calling System.exit()
+     *
+     * @param view screen where button is
     */
     public void cancelClick(View view){
         finish();
         //System.exit(0);
     }
 
+    /**
+     * @param view screen where button is
+     *
+     */
     public void loginClick(View view){
         attemptLogin();
         numberOfCalls=0;
@@ -148,12 +150,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
     }
-
+    /**
+     * @param view screen where button is
+     *
+     */
     public void registerClick(View view){
             Intent i2 = new Intent(this, RegistrationActivity.class);
             startActivity(i2);
     }
 
+    /**
+     *
+     */
     public void setAccessGranted(){
         accessGranted = false;
     }
@@ -257,11 +265,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             if(numberOfCalls==1) {
                                 //finish();
                                 Log.d("Moose", "How many times ***");
-                                startActivity(new Intent(getApplicationContext(), LocationsActivity.class));
+                                startActivity(new Intent(getApplicationContext(),
+                                        LocationsActivity.class));
                             }
                         }
                         else{
-                            Toast.makeText(LoginActivity.this, "Wrong password or email", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,
+                                    "Wrong password or email", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -278,12 +288,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
+
         return email.contains("@");
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
+    private boolean isPasswordValid(CharSequence password) {
+
         return password.length() > 4;
     }
 
@@ -376,6 +386,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      *
      * Cannot make class static because non-static fields mAuthTask and mPasswordView cannot be
      * referenced by static content
+     *
+     * Magic number error is set from template, cannot be changed
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -389,7 +401,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
+
 
             try {
                 // Simulate network access.
@@ -406,7 +418,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             }
 
-            // TODO: register the new account here.
+
             return true;
         }
 
