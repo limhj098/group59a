@@ -1,12 +1,17 @@
 package com.example.hyejingracelim.donationtracker;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @version 11/8/18
+ * @author group59a
+ * Class that differentiates the different users that can log in
+ * Stores information about different users
+ */
 public class User {
-    public static List<String> legalUsers = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manger",
+    public static List<String> legalUsers = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manager",
             "Warehouse Employee", "Donation Recorder Employee");
 
     public static List<String> categories = Arrays.asList("Clothing", "Hat", "Electronics", "Kitchen", "Household",
@@ -32,45 +37,114 @@ public class User {
 
     }
 
-    public User(String name, String time, String shortd, String fulld, String loc, String category, String price){
+    /**
+     *
+     * @param name     The name of a location.
+     * @param time     The time in which the location is registered.
+     * @param shortDescript   The short description of a location.
+     * @param fullDescript    The full description of a location.
+     * @param loc      The location data of a location.
+     * @param category The category of a location.
+     * @param price    The price of a location.
+     */
+    public User(String name, String time, String shortDescript, String fullDescript, String loc, String category, String price){
         this.name = name;
         this.time = time;
-        this.shortDescript = shortd;
-        this.fullDescript = fulld;
+        this.shortDescript = shortDescript;
+        this.fullDescript = fullDescript;
         this.location_data = loc;
         this.category_data = category;
         this.price = price;
     }
-
+    /**
+     * @return name
+     */
     public String getName(){return name;}
+    /**
+     * @return time
+     */
     public String getTime() {return time;}
+
+    /**
+     * @return shortDescript
+     */
     public String getShortDescription(){return shortDescript;}
+
+    /**
+     * @return fullDescript
+     */
     public String getFullDescription(){return fullDescript;}
+
+    /**
+     * @return location_data
+     */
     public String getLocation(){return location_data;}
+
+    /**
+     * @return category_data
+     */
     public String getCategory(){return category_data;}
+
+    /**
+     * @return price
+     */
     public String getPrice(){return price; }
 
-  //  public String getName() { return _name; }
+    /**
+     *
+     * @return _name
+     */
+    public String getUserName() { return _name; }
   //  public void setName(String name) { _name = name; }
 
+    /**
+     *
+     * @return _email
+     */
     public String getEmail() { return _email; }
+
+    /**
+     *
+     * @param email The email of a user.
+     */
     public void setEmail(String email) { _email = email; }
 
+    /**
+     *
+     * @return _password
+     */
     public String getPassword() { return _password; }
+
+    /**
+     *
+     * @param password The password of a user.
+     */
     public void setPassword(String password) { _password = password; }
 
+    /**
+     *
+     * @return _userType
+     */
     public UserType getUserType() {return _userType;}
+
+    /**
+     *
+     * @param userType The userType of a user.
+     */
     public void setUserType(UserType userType) {_userType = userType;}
 
-
-    public User(String name, String email, String password, UserType userType) {
+    /**
+     *  @param name The name of a user.
+     * @param email The email of a user.
+     * @param password The password of a user.
+     */
+    private User(String name, String email, String password) {
         _name = name;
         _email = email;
         _password = password;
-        _userType = userType;
+        _userType = UserType.GUEST;
     }
 
-    public User(String name, String email, String password) {this(name, email, password, UserType.GUEST);}
 
   //  public User() {
      //   this("enter name", "enter email", "enter password", UserType.GUEST);

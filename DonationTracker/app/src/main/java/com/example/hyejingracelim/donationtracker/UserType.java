@@ -1,5 +1,7 @@
 package com.example.hyejingracelim.donationtracker;
-
+/**
+ * Different types of users that can log in
+ */
 public enum UserType {
     GUEST,
     CUSTOMER,

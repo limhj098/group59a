@@ -1,32 +1,29 @@
 package com.example.hyejingracelim.donationtracker;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SimpleAdapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+/**
+ * @version 11/8/18
+ * @author group59a
+ * Class that differentiates the different users that can log in
+ * Stores information about different users
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private Button locationButton;
@@ -38,23 +35,29 @@ public class SearchActivity extends AppCompatActivity {
 
     private TextView results;
 
+    /**
+     *
+     * @param savedInstanceState The saved instance state of the Bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
 
-        final Button locationButton = (Button) findViewById(R.id.button3);
-        final Button categoryButton = (Button) findViewById(R.id.button4);
-        final Button itemNameButton = (Button) findViewById(R.id.button5);
+        final Button locationButton = findViewById(R.id.button3);
+        final Button categoryButton = findViewById(R.id.button4);
+        final Button itemNameButton = findViewById(R.id.button5);
 
-        itemNameSearch = (EditText) findViewById(R.id.itemName);
+        itemNameSearch = findViewById(R.id.itemName);
 
-        locationSpinner = (Spinner) findViewById(R.id.location);
+        locationSpinner = findViewById(R.id.location);
+        //noinspection unchecked
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.locations);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(adapter);
 
-        categorySpinner = (Spinner) findViewById(R.id.category);
+        categorySpinner = findViewById(R.id.category);
+        //noinspection unchecked
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.categories);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter2);
@@ -65,6 +68,7 @@ public class SearchActivity extends AppCompatActivity {
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
+                    //noinspection unchecked
                     final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
@@ -75,14 +79,14 @@ public class SearchActivity extends AppCompatActivity {
                             filteredMap.put(entry.getKey(),entry.getValue());
                         }
                     }
-                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
-                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    final TextView tv1 = findViewById(R.id.textView4);
+                    final ListView lv1 = findViewById(R.id.searchResult);
                     lv1.setClickable(true);
                     ois.close();
                     fis.close();
                     Set<String> itemSet = filteredMap.keySet();
                     List<String> itemList = new ArrayList<>(itemSet);
-                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(
                             getBaseContext(),
                             android.R.layout.simple_list_item_1,
                             itemList
@@ -93,23 +97,30 @@ public class SearchActivity extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap.get(g);
+                            assert currentItem != null;
                             tv1.setText(currentItem.toString());
                         }
                     });
                 }
-                catch(Exception e){};
+                catch(Exception ignored){}
 
-              //  assertEquals(expectedMap, filteredMap);
+                //  assertEquals(expectedMap, filteredMap);
             }
 
 
         });
+
         categoryButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v View v that is used when the button is clicked.
+             */
             @Override
             public void onClick(View v) {
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
+                    //noinspection unchecked
                     final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
@@ -120,40 +131,53 @@ public class SearchActivity extends AppCompatActivity {
                             filteredMap2.put(entry.getKey(),entry.getValue());
                         }
                     }
-                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
-                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    final TextView tv1 = findViewById(R.id.textView4);
+                    final ListView lv1 = findViewById(R.id.searchResult);
                     lv1.setClickable(true);
                     ois.close();
                     fis.close();
                     Set<String> itemSet = filteredMap2.keySet();
                     List<String> itemList = new ArrayList<>(itemSet);
-                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(
                             getBaseContext(),
                             android.R.layout.simple_list_item_1,
                             itemList
                     );
                     lv1.setAdapter(arrayAdapter1);
                     lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        /**
+                         *
+                         * @param parent AdapterView<?> parent
+                         * @param view View class used.
+                         * @param position An int of the position.
+                         * @param id A long of the position.
+                         */
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap2.get(g);
+                            assert currentItem != null;
                             tv1.setText(currentItem.toString());
                         }
                     });
                 }
-                catch(Exception e){};
+                catch(Exception ignored){}
                 //  assertEquals(expectedMap, filteredMap);
 
             }
 
         });
         itemNameButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v View that is used when button is clicked.
+             */
             @Override
             public void onClick(View v) {
                 try {
                     FileInputStream fis = openFileInput("itemInfo");
                     ObjectInputStream ois = new ObjectInputStream(fis);
+                    //noinspection unchecked
                     final HashMap<String, Item> itemInfo = (HashMap<String, Item>) ois.readObject();
                     ois.close();
                     fis.close();
@@ -164,29 +188,37 @@ public class SearchActivity extends AppCompatActivity {
                             filteredMap3.put(entry.getKey(),entry.getValue());
                         }
                     }
-                    final TextView tv1 = (TextView) findViewById(R.id.textView4);
-                    final ListView lv1 = (ListView) findViewById(R.id.searchResult);
+                    final TextView tv1 = findViewById(R.id.textView4);
+                    final ListView lv1 = findViewById(R.id.searchResult);
                     lv1.setClickable(true);
                     ois.close();
                     fis.close();
                     Set<String> itemSet = filteredMap3.keySet();
                     List<String> itemList = new ArrayList<>(itemSet);
-                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(
+                    ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(
                             getBaseContext(),
                             android.R.layout.simple_list_item_1,
                             itemList
                     );
                     lv1.setAdapter(arrayAdapter1);
                     lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        /**
+                         *
+                         * @param parent AdapterView<?> parent
+                         * @param view View class used.
+                         * @param position An int of the position.
+                         * @param id A long of the position.
+                         */
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String g = (String) lv1.getItemAtPosition(position);
                             Item currentItem = filteredMap3.get(g);
+                            assert currentItem != null;
                             tv1.setText(currentItem.toString());
                         }
                     });
                 }
-                catch(Exception e){};
+                catch(Exception ignored){}
                 //  assertEquals(expectedMap, filteredMap);
             }
 
