@@ -59,7 +59,7 @@ public class User {
     /**
      * @return name
      */
-    public String getName(){return name;}
+    public String getName(){return _name;}
     /**
      * @return time
      */
@@ -79,6 +79,12 @@ public class User {
      * @return location_data
      */
     public String getLocation(){return location_data;}
+
+    /**
+     *
+     * @param location The email of a user.
+     */
+    public void setLocation(String location) { location_data = location; }
 
     /**
      * @return category_data
@@ -138,17 +144,36 @@ public class User {
      * @param email The email of a user.
      * @param password The password of a user.
      */
-    private User(String name, String email, String password) {
+    public User(String name, String email, String password) {
         _name = name;
         _email = email;
         _password = password;
         _userType = UserType.GUEST;
     }
 
-
-  //  public User() {
-     //   this("enter name", "enter email", "enter password", UserType.GUEST);
-
-  //  }
+    /**
+     * Converts user to string
+     * @return user as string
+     */
+    @Override
+    public String toString() {
+        if (_name != null) {
+            String returnUser ="";
+            returnUser = returnUser + "Name: ";
+            returnUser = returnUser + _name;
+            if (location_data!=null) {
+                returnUser = returnUser + " Location: ";
+                returnUser = returnUser + location_data;
+            }
+            if (_userType != null) {
+                returnUser = returnUser + " User Type: ";
+                returnUser = returnUser + _userType;
+            }
+            return returnUser;
+        }
+        else {
+            return "User not Found";
+        }
+    }
 
 }
