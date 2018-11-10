@@ -20,13 +20,12 @@ import java.util.Arrays;
  */
 public class LocationsActivity extends AppCompatActivity implements ListFrag.itemSelected {
 
-    //removed static from these
-    boolean loadData = false;
+    static boolean loadData = false;
     //static ArrayList<String[]>  allData = new ArrayList<String[]>(); // for inspection
-    ArrayList<String[]>  allData ; // for inspection
+    static ArrayList<String[]>  allData ; // for inspection
     //static ArrayList<String>  list = null; // for inspection
-    ArrayList<String>  list ; // for inspection
-    String []  detailedList;
+    static ArrayList<String>  list ; // for inspection
+    static String []  detailedList;
 
     /**
      *
