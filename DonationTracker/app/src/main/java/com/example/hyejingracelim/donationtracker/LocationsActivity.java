@@ -48,10 +48,12 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         list =new ArrayList<>(); // for inspection
 
         ArrayList<String[]>  allData = readCSV();
+        Log.wtf("Moose"," entered logout method");
         Log.d("Moose",Arrays.toString(allData.get(0)));
         String ToastMsg = "Data have been loaded successfully";
         // The only way to use the show method
         Toast.makeText(getApplicationContext(),ToastMsg,Toast.LENGTH_LONG).show();
+
 
         list.clear();
 
@@ -98,10 +100,14 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
                 // '" + cols[1] + "' > nxt line
                 // , Column 2: '" + cols[2] + "'");
                 allData2.add(cols);
+                line= br.readLine();
+                Log.wtf("Moose"," entered logout method");
+
             }
         } catch (IOException e) {
             // Prints throwable details
             e.printStackTrace();
+
         }
         return allData2;
     }
@@ -135,6 +141,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
      */
     public void logout(View view){
         //Intent i = new Intent();
+        Log.wtf("Moose"," entered logout method");
         finish();
     }
 
