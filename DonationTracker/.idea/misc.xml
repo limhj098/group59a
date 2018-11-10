@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+=======
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType ADMIN" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType BRANCH_MANAGER" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType CUSTOMER" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType DONATION_RECORDER_EMPLOYEE" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType DONATOR" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.UserType WAREHOUSE_EMPLOYEE" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity categoryButton" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity itemNameButton" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity locationButton" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity results" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity categorySpinner" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity itemNameSearch" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.SearchActivity locationSpinner" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User categories" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User legalUsers" />
+      <entry_point TYPE="field" FQNAME="com.example.hyejingracelim.donationtracker.User locations" />
+    </entry_points>
+  </component>
+>>>>>>> f6e30c5120e4a0a46c531f00454347461fbb4c9c
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
