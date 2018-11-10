@@ -21,8 +21,8 @@ import java.util.Arrays;
 public class LocationsActivity extends AppCompatActivity implements ListFrag.itemSelected {
 
     static boolean loadData = false;
-    //static ArrayList<String[]>  allData = new ArrayList<String[]>(); // for inspection
-    static ArrayList<String[]>  allData ; // for inspection
+    static ArrayList<String[]>  allData = new ArrayList<String[]>(); // for inspection
+    //static ArrayList<String[]>  allData ; // for inspection
     //static ArrayList<String>  list = null; // for inspection
     static ArrayList<String>  list ; // for inspection
     static String []  detailedList;
@@ -109,6 +109,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
             e.printStackTrace();
 
         }
+        allData = allData2;
         return allData2;
     }
 
@@ -120,18 +121,21 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     public void onItemSelection(int index) {
 
         //
+
         index += 1;
 
         //
         // The only way to use the clone method
         detailedList = allData.get(index).clone();
 
+        Log.wtf("Moose", "XXX");
 
-        Log.d("Moose", Arrays.toString(allData.get(index))+" The data for the location:"+index);
+        Log.wtf("Moose", Arrays.toString(allData.get(index))+"XXX"+index);
 
         Intent intent = getIntent();
-        finish();
         startActivity(intent);
+        finish();
+
 
     }
 

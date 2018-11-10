@@ -23,8 +23,8 @@ public class DetailFrag extends ListFragment {
         // Required empty public constructor
     }
 
-    //static ArrayList<String>  list = new ArrayList<String>(); // for inspection
-    static ArrayList<String>  list = new ArrayList<>();
+    static ArrayList<String>  list = new ArrayList<String>(); // for inspection
+    //static ArrayList<String>  list = new ArrayList<>();
 
     /**
      *
@@ -69,7 +69,7 @@ public class DetailFrag extends ListFragment {
 
             {
                 // the easiest wat to set up the list adapter
-                setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, list)); // for inspection
+                setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list)); // for inspection
             }
 
 

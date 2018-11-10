@@ -19,8 +19,8 @@ import java.util.ArrayList;
  */
 public class ListFrag extends ListFragment {
 
-    //itemSelected activity; // for inspection
-    private itemSelected activity; // for inspection
+    itemSelected activity; // for inspection
+    //private itemSelected activity; // for inspection
 
     /**
      *  This interface is for data passage
