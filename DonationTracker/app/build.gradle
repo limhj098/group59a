@@ -21,6 +21,11 @@ android {
 }
 
 dependencies {
+
+    testImplementation 'org.mockito:mockito-core:1.10.19' // this one is added for testing (mockito)
+    testImplementation 'androidx.test:core:1.0.0' // this one is also added for testing  (complex UI interaction)
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
     implementation 'com.android.support:recyclerview-v7:28.0.0-rc02'
@@ -42,7 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
 
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

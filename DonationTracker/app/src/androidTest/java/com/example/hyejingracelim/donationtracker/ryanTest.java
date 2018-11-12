@@ -1,26 +1,31 @@
-package com.example.hyejingracelim.donationtracker;
-
-import android.support.test.runner.AndroidJUnit4;
-
-import org.junit.After;
-import org.junit.Before;
+import android.content.Context;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import android.support.test.runner.AndroidJUnit4;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
+import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
+public class UnitTestSample {
 
-import static org.junit.Assert.*;
+    private static final String FAKE_STRING = "HELLO WORLD";
 
-public class ryanTest {
-    private LocationsActivity testModel;
+    @Mock
+    Context mMockContext;
 
-    @Before
-    public void setUp() {
-        testModel = new LocationsActivity();
-    }
+    @Test
+    public void readStringFromContext_LocalizedString() {
+        // Given a mocked Context injected into the object under test...
+        when(mMockContext.getString(R.string.hello_world))
+                .thenReturn(FAKE_STRING);
+        ClassUnderTest myObjectUnderTest = new ClassUnderTest(mMockContext);
 
+        // ...when the string is returned from the object under test...
+        String result = myObjectUnderTest.getHelloWorldString();
 
-    @After
-    public void tearDown() throws Exception {
+        // ...then the result should be the expected one.
+        assertThat(result, is(FAKE_STRING));
     }
 }

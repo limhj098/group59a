@@ -36,6 +36,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locations);
     }
+
 //
 
     /**
