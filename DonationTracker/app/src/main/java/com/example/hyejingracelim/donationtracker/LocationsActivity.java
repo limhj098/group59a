@@ -74,7 +74,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
      * @return , returns a String arrayList
      * method changed to private for inspection
      */
-    private ArrayList<String[]> readCSV(){
+    private  ArrayList<String[]> readCSV(){
 
         //allData = new ArrayList<String[]>(); // for inspection
         //allData = new ArrayList<>(); // for inspection
