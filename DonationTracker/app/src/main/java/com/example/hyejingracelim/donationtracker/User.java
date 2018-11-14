@@ -1,6 +1,8 @@
 package com.example.hyejingracelim.donationtracker;
 
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class User {
     private String _password;
     private UserType _userType;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private String name;
     private String time;
     private String shortDescript;
@@ -59,7 +62,16 @@ public class User {
     /**
      * @return name
      */
-    public String getName(){return _name;}
+    public String getName(){
+        String name1;
+        //noinspection ObjectEqualsNull,ConstantConditions
+        if (_name.equals("") || _name.equals(null)) {
+            return "";
+        } else {
+            name1 = _name;
+        }
+        return name1;
+    }
     /**
      * @return time
      */
@@ -155,6 +167,7 @@ public class User {
      * Converts user to string
      * @return user as string
      */
+    @NonNull
     @Override
     public String toString() {
         if (_name != null) {
