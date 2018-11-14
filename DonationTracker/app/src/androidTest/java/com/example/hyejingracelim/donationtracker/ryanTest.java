@@ -1,35 +1,17 @@
 package com.example.hyejingracelim.donationtracker;
 
-
-import android.content.Context;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
-
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
 import static junit.framework.TestCase.assertEquals;
-
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
-//import static org.mockito.*;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
-
-
-//import androidx.test.core.app.ApplicationProvider;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-//import static com.google.common.truth.Truth.assertThat;
 @RunWith(AndroidJUnit4.class)
 public class ryanTest {
 
@@ -43,8 +25,10 @@ public class ryanTest {
         ArrayList<String[]> result = mRule.getActivity().readCSV(is);
 
         // ...these two lines were copied manually from the CSV file
-        String firstLine ="Key,Name,Latitude,Longitude,Street Address,City,State,Zip,Type,Phone,Website";
-        String lastLine = "6,KEEP NORTH FULTON BEAUTIFUL,33.96921,-84.3688,470 MORGAN FALLS RD,Sandy Springs,GA,30302,Store,(770) 555 - 7321,www.knfb.org";
+        String firstLine ="Key,Name,Latitude,Longitude,Street Address," +
+                "City,State,Zip,Type,Phone,Website";
+        String lastLine = "6,KEEP NORTH FULTON BEAUTIFUL,33.96921,-84.3688," +
+                "470 MORGAN FALLS RD,Sandy Springs,GA,30302,Store,(770) 555 - 7321,www.knfb.org";
 
         String[] firstArr = firstLine.split(",");
         String[] lastArr = lastLine.split(",");
