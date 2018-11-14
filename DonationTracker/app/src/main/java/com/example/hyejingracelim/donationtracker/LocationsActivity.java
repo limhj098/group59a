@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -48,7 +49,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         //list =new ArrayList<String>(); // for inspection
         list =new ArrayList<>(); // for inspection
 
-        ArrayList<String[]>  allData = readCSV();
+        ArrayList<String[]>  allData = readCSV(getResources().openRawResource(R.raw.location_data));
         Log.wtf("Moose"," entered logout method");
         Log.d("Moose",Arrays.toString(allData.get(0)));
         String ToastMsg = "Data have been loaded successfully";
@@ -74,8 +75,9 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
      *
      * @return , returns a String arrayList
      * method changed to private for inspection
+     * then public for testing
      */
-    private  ArrayList<String[]> readCSV(){
+    public  ArrayList<String[]> readCSV(InputStream input){
 
         //allData = new ArrayList<String[]>(); // for inspection
         //allData = new ArrayList<>(); // for inspection
@@ -84,9 +86,14 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
 
         // Read the raw csv file
         // The only way to use the input stream method
-        InputStream is = getResources().openRawResource(R.raw.location_data);
+
+        InputStream is = input;
+
         // Reads text from character-input stream, buffering characters for efficient reading
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+        BufferedReader br;
+
+         br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+
         // Initialization
         String line = "";
         // Handling exceptions
@@ -95,6 +102,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
             line = br.readLine();
             while (line != null) {  //used to be line = br.readLine() in while
                 // use comma as separator columns of CSV
+
                 String[] cols = line.split(",");
                 // Print in logcat
                 //System.out.println("Column 0 = '" + cols[0] + "', Column 1 = > nxt line
