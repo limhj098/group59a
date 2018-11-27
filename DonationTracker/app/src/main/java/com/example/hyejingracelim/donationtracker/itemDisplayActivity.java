@@ -32,7 +32,7 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
 
     /**
      * Displays the Item on the screen on the creation of this activity.
-     * @param savedInstanceState
+     * @param savedInstanceState bundles
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,7 @@ public class itemDisplayActivity extends AppCompatActivity implements View.OnCli
 
     /**
      * On click of button, run submit click.
-     * @param view
+     * @param view view
      */
     @Override
     public void onClick(View view){

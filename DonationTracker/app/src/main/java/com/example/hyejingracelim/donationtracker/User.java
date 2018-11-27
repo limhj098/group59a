@@ -13,13 +13,16 @@ import java.util.List;
  * Stores information about different users
  */
 public class User {
-    public static List<String> legalUsers = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manager",
+    public static List<String> legalUsers
+            = Arrays.asList("Guest", "Customer", "Admin", "Donator", "Branch Manager",
             "Warehouse Employee", "Donation Recorder Employee");
 
-    public static List<String> categories = Arrays.asList("Clothing", "Hat", "Electronics", "Kitchen", "Household",
+    public static List<String> categories
+            = Arrays.asList("Clothing", "Hat", "Electronics", "Kitchen", "Household",
             "Other");
 
-    public static List<String> locations = Arrays.asList("Location 1", "Location 2", "Location 3", "Location 4", "Location 5",
+    public static List<String> locations
+            = Arrays.asList("Location 1", "Location 2", "Location 3", "Location 4", "Location 5",
             "Location 6", "ALL");
 
     private String _name;
@@ -36,6 +39,9 @@ public class User {
     private String category_data;
     private String price;
 
+    /**
+     * user
+     */
     public User(){
 
     }
@@ -50,7 +56,8 @@ public class User {
      * @param category The category of a location.
      * @param price    The price of a location.
      */
-    public User(String name, String time, String shortDescript, String fullDescript, String loc, String category, String price){
+    public User(String name, String time, String
+            shortDescript, String fullDescript, String loc, String category, String price){
         this.name = name;
         this.time = time;
         this.shortDescript = shortDescript;

@@ -53,12 +53,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng CON = new LatLng(33.71747,-84.2521);
         LatLng BEA = new LatLng(33.96921,-84.3688);
 
-        googleMap.addMarker(new MarkerOptions().position(AFD).title("AFD Station").snippet("Phone Number: (404) 555 - 3456"));
-        googleMap.addMarker(new MarkerOptions().position(BNG).title("BOYS & GIRLS CLUB W.W. WOOLFOLK").snippet("Phone Number: (404) 555 - 1234"));
-        googleMap.addMarker(new MarkerOptions().position(MIN).title("PATHWAY UPPER ROOM CHRISTIAN MINISTRIES").snippet("Phone Number: (404) 555 - 5432"));
-        googleMap.addMarker(new MarkerOptions().position(PAV).title("PAVILION OF HOPE INC").snippet("Phone Number: (404) 555 - 8765"));
-        googleMap.addMarker(new MarkerOptions().position(CON).title("D&D CONVENIENCE STORE").snippet("Phone Number:(404) 555 - 9876"));
-        googleMap.addMarker(new MarkerOptions().position(BEA).title("KEEP NORTH FULTON BEAUTIFUL").snippet("Phone Number: (770) 555 - 7321"));
+        googleMap.addMarker(new MarkerOptions().
+                position(AFD).title("AFD Station")
+                .snippet("Phone Number: (404) 555 - 3456"));
+        googleMap.addMarker(new MarkerOptions().
+                position(BNG).title("BOYS & GIRLS CLUB W.W. WOODFOLK")
+                .snippet("Phone Number: (404) 555 - 1234"));
+        googleMap.addMarker(new MarkerOptions().
+                position(MIN).title("PATHWAY UPPER ROOM CHRISTIAN MINISTRIES")
+                .snippet("Phone Number: (404) 555 - 5432"));
+        googleMap.addMarker(new MarkerOptions().
+                position(PAV).title("PAVILION OF HOPE INC")
+                .snippet("Phone Number: (404) 555 - 8765"));
+        googleMap.addMarker(new MarkerOptions().
+                position(CON).title("D&D CONVENIENCE STORE")
+                .snippet("Phone Number:(404) 555 - 9876"));
+        googleMap.addMarker(new MarkerOptions().
+                position(BEA).title("KEEP NORTH FULTON BEAUTIFUL")
+                .snippet("Phone Number: (770) 555 - 7321"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(AFD));
     }
 }

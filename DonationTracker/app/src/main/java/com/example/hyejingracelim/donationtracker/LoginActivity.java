@@ -25,6 +25,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.os.*;
+
 
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
@@ -39,6 +42,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.auth.AuthResult;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 
 import java.util.ArrayList;
@@ -80,6 +89,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private boolean accessGranted; // goes true after correct info entering
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
+    private int counter = 2;
 
     private int numberOfCalls;
 
@@ -90,6 +102,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        //fb stuff
+        //FacebookSDK.sdkInitialize(getApplicationContext());
+        loginButton = (LoginButton) findViewById(R.id.login_button); //facebook
+        callbackManager = CallbackManager.Factory.create();
+
+        loginButton.registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        goMainScreen();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(LoginActivity.this,
+                                "Canceled", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(LoginActivity.this,
+                                "Error", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
         // Set up the login form.
@@ -123,6 +160,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    private void goMainScreen() {
+        Intent intent = new Intent(this, LocationsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
@@ -159,6 +208,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void registerClick(View view){
             Intent i2 = new Intent(this, RegistrationActivity.class);
             startActivity(i2);
+    }
+
+    public void guestClick(View view){
+        Intent i3 = new Intent(this, LocationsActivity.class);
+        startActivity(i3);
     }
 
 //    public void setAccessGranted(){
@@ -254,6 +308,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
+        final Button logButton = findViewById(R.id.email_sign_in_button);
+
         boolean cancel = false;
         View focusView = null;
 
@@ -286,7 +342,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
-
                         if (task.isSuccessful()){
                             numberOfCalls++;
                             if(numberOfCalls==1) {
@@ -295,11 +350,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 startActivity(new Intent(getApplicationContext(),
                                         LocationsActivity.class));
                             }
-                        }
-                        else{
-                            Toast.makeText(LoginActivity.this,
-                                    "Wrong password or email", Toast.LENGTH_SHORT).show();
-                        }
+                        } else if (!task.isSuccessful() && counter == 0){
+                                logButton.setEnabled(false);
+                                Toast alert = Toast.makeText(LoginActivity.this, "Login Disabled for 5 mins", Toast.LENGTH_SHORT);
+                                alert.show();
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable()
+                                {   @Override
+                                public void run()
+                                {   logButton.setEnabled(true);
+                                    counter = 2;
+                                }
+                                }, 300000);
+                            } else {
+                                Toast.makeText(LoginActivity.this,
+                                        "Wrong password or email", Toast.LENGTH_SHORT).show();
+                                counter--;
+                            }
 
                     }
                 });

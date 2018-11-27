@@ -20,6 +20,12 @@ android {
     }
 }
 
+buildscript{
+    repositories {
+        mavenCentral()
+    }
+}
+
 dependencies {
 
 
@@ -46,6 +52,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     androidTestImplementation ('com.android.support.test:runner:1.0.1') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,13 +15,16 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
+
 /**
  *
  */
 public class LocationsActivity extends AppCompatActivity implements ListFrag.itemSelected {
 
     static boolean loadData = false;
-    static ArrayList<String[]>  allData = new ArrayList<String[]>(); // for inspection
+    static ArrayList<String[]>  allData = new ArrayList<>(); // for inspection
     //static ArrayList<String[]>  allData ; // for inspection
     //static ArrayList<String>  list = null; // for inspection
     static ArrayList<String>  list ; // for inspection
@@ -38,8 +40,17 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
         setContentView(R.layout.activity_locations);
     }
 
-//
-
+    private void goLoginScreen() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+/*
+    public void logout(View view) {
+        LoginManager.getInstance().logOut();
+        goLoginScreen();
+    }
+*/
     /**
      *
      * @param view , has to be fed in here for the button to work
@@ -72,7 +83,7 @@ public class LocationsActivity extends AppCompatActivity implements ListFrag.ite
     }
 
     /**
-     *
+     * @param input t=input
      * @return , returns a String arrayList
      * method changed to private for inspection
      * then public for testing

@@ -81,6 +81,20 @@
                 android:text="SIGN IN"
                 android:textStyle="bold" />
 
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp" />
+            <Button
+                android:id="@+id/guestButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="guestClick"
+                android:text="Enter As Guest" />
+
             <Button
                 android:id="@+id/cancelButton"
                 android:layout_width="match_parent"
@@ -90,4 +104,10 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </LinearLayout>
