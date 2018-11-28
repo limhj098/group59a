@@ -27,6 +27,13 @@
         android:onClick="registerClick"
         android:text="REGISTER" />
 
+    <Button
+        android:id="@+id/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="forgotPasswordClick"
+        android:text="Forgot Password" />
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -110,4 +117,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
+
 </LinearLayout>

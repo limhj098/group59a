@@ -77,6 +77,8 @@ import android.app.PendingIntent;
  */
 
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    private static final String TAG = "LoginActivity";
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -212,6 +214,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
            // Intent i = new Intent(this, LocationsActivity.class);//startActivity(i);
         }
 
+    }
+
+    public void forgotPasswordClick(View view) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        String email = mEmailView.getText().toString();
+
+        auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                        }
+                    }
+                });
     }
     /**
      * @param view screen where button is
