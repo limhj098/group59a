@@ -52,8 +52,20 @@ import com.facebook.login.widget.LoginButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.view.View;
+
 
 import static android.Manifest.permission.READ_CONTACTS;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.NotificationChannel;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
+import android.app.TaskStackBuilder;
+import android.app.PendingIntent;
 
 /**
  * A login screen that offers login via email/password.
@@ -295,6 +307,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
 
 
+
+    @TargetApi(26)
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -347,6 +361,41 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             if(numberOfCalls==1) {
                                 //finish();
                                 Log.d("Moose", "How many times ***");
+
+                                int NOTIFICATION_ID = 234;
+
+                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                                String CHANNEL_ID = "my_channel_01";
+                                CharSequence name = "my_channel";
+                                String Description = "This is my channel";
+                                int importance = NotificationManager.IMPORTANCE_HIGH;
+                                NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+                                mChannel.setDescription(Description);
+                                mChannel.enableLights(true);
+                                mChannel.setLightColor(Color.RED);
+                                mChannel.enableVibration(true);
+                                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                                mChannel.setShowBadge(false);
+                                notificationManager.createNotificationChannel(mChannel);
+
+
+                                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+                                        .setContentTitle("Donation Tracker")
+                                        .setContentText("You have successfully logged in");
+
+                                Intent resultIntent = new Intent(getApplicationContext(),
+                                        LocationsActivity.class);
+                                TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplicationContext());
+                                stackBuilder.addParentStack(LoginActivity.class);
+                                stackBuilder.addNextIntent(resultIntent);
+                                PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                                builder.setContentIntent(resultPendingIntent);
+
+                                notificationManager.notify(NOTIFICATION_ID, builder.build());
+
                                 startActivity(new Intent(getApplicationContext(),
                                         LocationsActivity.class));
                             }
@@ -378,7 +427,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView.requestFocus();
         }
     }
-
 
 
     private boolean isEmailValid(String email) {
