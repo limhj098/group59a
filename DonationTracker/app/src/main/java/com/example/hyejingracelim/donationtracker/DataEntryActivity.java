@@ -99,11 +99,11 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         category_data = categorySpinner.getSelectedItem().toString();
 
         Item a = new Item();
-        a.donationTime = time;
-        a.location = location_data;
-        a.category = category_data;
-        a.longDescription = fullDescription;
-        a.shortDescription = shortDescription;
+        a.setDonationTime(time);
+        a.setLocation(location_data);
+        a.setCategory(category_data);
+        a.setLongDescription(fullDescription);
+        a.setShortDescription(shortDescription);
         try {
             // Creates a file in the primary external storage space of the
             // If the file does not exists, it is created.

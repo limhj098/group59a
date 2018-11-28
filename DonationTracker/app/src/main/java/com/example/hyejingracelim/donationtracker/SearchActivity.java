@@ -78,7 +78,7 @@ public class SearchActivity extends AppCompatActivity {
                     String location_data = locationSpinner.getSelectedItem().toString();
                     final Map<String, Item> filteredMap = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
-                        if (entry.getValue().location.equals(location_data)) {
+                        if (entry.getValue().getLocation().equals(location_data)) {
                             filteredMap.put(entry.getKey(),entry.getValue());
                         }
                     }
@@ -131,7 +131,7 @@ public class SearchActivity extends AppCompatActivity {
                     String category_data = categorySpinner.getSelectedItem().toString();
                     final Map<String, Item> filteredMap2 = new HashMap<>();
                     for (Map.Entry<String,Item> entry : itemInfo.entrySet()){
-                        if (entry.getValue().category.equals(category_data)) {
+                        if (entry.getValue().getCategory().equals(category_data)) {
                             filteredMap2.put(entry.getKey(),entry.getValue());
                         }
                     }

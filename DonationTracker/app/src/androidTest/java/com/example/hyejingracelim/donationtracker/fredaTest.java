@@ -24,15 +24,15 @@ public class fredaTest {
     @Test
     public void testToString() {
         Item a = new Item();
-        a.donationTime = "5:00pm";
-        a.location = "location 1";
-        a.category = "Clothes";
-        a.longDescription = "A Yellow sundress with polka dots";
-        a.value = "$5";
+        a.setDonationTime("5:00pm");
+        a.setLocation("location 1");
+        a.setCategory("Clothes");
+        a.setLongDescription("A Yellow sundress with polka dots");
+        a.setValue("$5");
 
-        assertEquals(a.toString(), "Time : " + a.donationTime + " Location : " + a.location
-                        + " Category : " + a.category + " Description : " + a.longDescription
-                        + " Value : " + a.value);
+        assertEquals(a.toString(), "Time : " + a.getDonationTime() + " Location : " + a.getLocation()
+                        + " Category : " + a.getCategory() + " Description : " + a.getLongDescription()
+                        + " Value : " + a.getValue());
     }
 
 }
