@@ -15,10 +15,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseUser;
+import android.util.Log;
+
 /**
  * Registers the User to the database
  */
 public class RegistrationActivity extends AppCompatActivity implements  View.OnClickListener {
+
+    private static final String TAG = "RegistrationActivity";
 
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -65,6 +70,7 @@ public class RegistrationActivity extends AppCompatActivity implements  View.OnC
                             Toast.makeText
                                     (RegistrationActivity.this,
                                             "Success", Toast.LENGTH_SHORT).show();
+                            sendEmailVerification();
                             finish();
                         }
                         if (!task.isSuccessful()) {
@@ -76,6 +82,25 @@ public class RegistrationActivity extends AppCompatActivity implements  View.OnC
                     }
                 });
     }
+
+    public void sendEmailVerification() {
+        // [START send_email_verification]
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                        }
+                    }
+                });
+        // [END send_email_verification]
+    }
+
+
     @Override
     public void onClick(View view){
         registerClick();
