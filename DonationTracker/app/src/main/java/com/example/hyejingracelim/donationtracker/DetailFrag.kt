@@ -42,7 +42,7 @@ class DetailFrag : ListFragment() {
             list.add("Choose a location to Display")
         } else {
             list.clear()
-            arr = LocationsActivity.detailedList.clone()
+            arr = LocationsActivity.detailedList!!.clone()
 
             for (i in arr.indices) {
                 list.add(LocationsActivity.allData[0][i] + " : " + arr[i])

@@ -57,7 +57,7 @@ class ListFrag : ListFragment() {
         if (LocationsActivity.list == null) {
             list.add("No Data Available !")
         } else {
-            list = LocationsActivity.list
+            list = LocationsActivity.list!!
         }
 
 
