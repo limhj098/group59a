@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OptionFrag">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="logout"
+        android:text="Sign \n Out"
+        android:textColor="@color/justWhite"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="readData"
+        android:text="Load \ndata"
+        android:textColor="@color/justWhite"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/data_entry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:background="@color/colorAccent"
+        android:text="Go to data Entry Screen" />
+
+    <Button
+        android:id="@+id/viewItems"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:text="View Items" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="map" />
+
+</LinearLayout>
